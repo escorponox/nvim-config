@@ -1,0 +1,39 @@
+{
+  "coc.preferences.formatOnType": false,
+  "coc.preferences.formatOnSave": true,
+  "signature.enable": false,
+  "diagnostic.enable": true,
+  "diagnostic.errorSign": "!!",
+  "diagnostic.warningSign": ">>",
+  "diagnostic.infoSign": "--",
+  "diagnostic.hintSign": "->",
+  "diagnostic.virtualText": true,
+  "diagnostic.enableMessage": "always",
+  "javascript.suggestionActions.enabled": false,
+  "list.normalMappings": {
+    "t": "action:tabe",
+    "s": "action:vsplit"
+  },
+  "list.insertMappings": {
+    "<C-t>": "action:tabe",
+    "<C-v>": "action:vsplit"
+  },
+  "highlight.colors.enable": true,
+  "yank.enableCompletion": false,
+  "yank.highlight.enable": true,
+  "diagnostic.floatConfig": {
+    "maxHeight": 20
+  },
+  "signature.floatConfig": {
+    "maxHeight": 15
+  },
+  "hover.floatConfig": {
+    "maxHeight": 15
+  },
+  "git.addGBlameToBufferVar": false,
+  "go.goplsOptions": {
+    "gofumpt": true
+  },
+  "Lua.telemetry.enable": true,
+  "sumneko-lua.enableNvimLuaDev": true
+}
