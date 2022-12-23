@@ -65,6 +65,6 @@ require('telescope-config')
 require('tree-config')
 require('treesitter-config')
 require('lualine-config')
-require('nvim-autopairs').setup()
+require('autopairs-config')
 
 require('coc-config')

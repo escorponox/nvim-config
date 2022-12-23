@@ -1,6 +1,6 @@
-require'lualine'.setup {
+require 'lualine'.setup {
   options = {
-    theme = 'gruvbox'
+    theme = 'gruvbox_dark'
   },
   sections = {
     lualine_a = {},
@@ -13,11 +13,11 @@ require'lualine'.setup {
         'diagnostics',
         colored = true,
         sources = { 'coc' },
-        sections = {'error', 'warn'},
+        sections = { 'error', 'warn' },
         diagnostics_color = {
           -- Same values like general color option can be used here.
           error = { fg = 167 }, -- changes diagnostic's error color
-          warn  = { fg = 208 },  -- changes diagnostic's warn color
+          warn  = { fg = 208 }, -- changes diagnostic's warn color
         },
         symbols = { error = 'E', warn = 'W', info = 'I', hint = 'H' },
       }
@@ -27,10 +27,10 @@ require'lualine'.setup {
     lualine_a = {
       {
         'mode',
-        fmt = function(str) return str:sub(1,1) end
+        fmt = function(str) return str:sub(1, 1) end
       }
     },
-    lualine_b = {'branch'},
+    lualine_b = { 'branch' },
     lualine_c = {
       {
         'filename',
@@ -48,4 +48,3 @@ require'lualine'.setup {
     },
   }
 }
-
