@@ -33,4 +33,4 @@ vim.keymap.set('i', '<C-CR>', 'coc#pum#confirm()', { expr = true, silent = true 
 vim.keymap.set('i', '<C-space>', 'coc#refresh()', { expr = true, silent = true })
 
 vim.keymap.set('n', ',ss', ':CocCommand session.save<CR>')
-vim.keymap.set('n', ',ss', ':CocCommand session.load<CR>')
+vim.keymap.set('n', ',so', ':CocCommand session.load<CR>')
