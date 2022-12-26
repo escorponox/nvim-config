@@ -34,7 +34,7 @@ require('packer').startup(function(use)
     run = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build' }
   use 'ilAYAli/scMRU.nvim'
 
-  use('mbbill/undotree')
+  use 'mbbill/undotree'
   use 'tpope/vim-fugitive'
   use 'tpope/vim-surround'
   use 'tpope/vim-repeat'

@@ -1,4 +1,6 @@
 local actions = require('telescope.actions')
+local builtin = require('telescope.builtin')
+
 require('telescope').setup {
   defaults = {
     layout_config = {
@@ -18,6 +20,40 @@ require('telescope').setup {
         ["<C-s>"] = actions.send_selected_to_qflist
       },
     },
+    vimgrep_arguments = {
+      "rg",
+      "--column",
+      "--line-number",
+      "--no-heading",
+      "--ignore-case",
+      "--color=never",
+      "--glob",
+      "!yarn.lock",
+      "--glob",
+      "!package-lock.json"
+    }
+  },
+  pickers = {
+    find_files = {
+      find_command = {
+        "rg",
+        "--files",
+        "--hidden",
+        "--no-ignore",
+        "--no-messages",
+        "-g",
+        "!node_modules/",
+        "-g",
+        "!.git/",
+        "-g",
+        "!yarn.lock",
+        "-g",
+        "!package-lock.json"
+      }
+    },
+    quickfix = {
+      show_line = false
+    },
   },
   extensions = {
     fzf = {
@@ -31,25 +67,13 @@ require('telescope').setup {
 require('telescope').load_extension('fzf')
 require('telescope').load_extension('coc')
 
-local builtin = require('telescope.builtin')
-local rgOptions = { "rg", "--column", "--line-number", "--no-heading", "--ignore-case", "--color=never", "--glob",
-  "!yarn.lock", "--glob", "!package-lock.json" }
-local function find_files()
-  builtin.find_files({ find_command = { "rg", "--files", "--hidden", "--no-ignore", "--no-messages", "-g",
-    "!node_modules/", "-g", "!.git/", "-g", "!yarn.lock", "-g", "!package-lock.json" } })
-end
-
 local function grep_string()
-  builtin.grep_string({ search = vim.fn.input('Grep For > '), vimgrep_arguments = rgOptions })
+  builtin.grep_string({ search = vim.fn.input('Grep For > ') })
 end
 
-local function find_word()
-  builtin.grep_string({ vimgrep_arguments = rgOptions })
-end
-
-vim.keymap.set('n', ',ff', find_files)
+vim.keymap.set('n', ',ff', builtin.find_files)
 vim.keymap.set('n', ',fg', grep_string)
-vim.keymap.set('n', ',ft', find_word)
+vim.keymap.set('n', ',ft', builtin.grep_string)
 
 vim.keymap.set('n', ',fe', ':Telescope buffers<CR>')
 vim.keymap.set('n', ',fs', ':Telescope git_status<CR>')
