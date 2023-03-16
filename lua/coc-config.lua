@@ -25,10 +25,18 @@ vim.keymap.set('n', '<leader>hk', '<Plug>(coc-git-prevchunk)', { silent = true }
 vim.keymap.set('n', '<leader>hi', ':CocCommand git.chunkInfo<CR>', { silent = true })
 vim.keymap.set('n', '<leader>hu', ':CocCommand git.chunkUndo<CR>', { silent = true })
 
+local opts = { expr = true, silent = true, nowait = true }
 vim.keymap.set('n', '<C-f>', 'coc#float#has_scroll() ? coc#float#scroll(1) : "<C-f>"',
-  { expr = true, silent = true, nowait = true })
+  opts)
 vim.keymap.set('n', '<C-b>', 'coc#float#has_scroll() ? coc#float#scroll(0) : "<C-b>"',
-  { expr = true, silent = true, nowait = true })
+  opts)
+vim.keymap.set("i", "<C-f>",
+  'coc#float#has_scroll() ? "<c-r>=coc#float#scroll(1)<cr>" : "<Right>"', opts)
+vim.keymap.set("i", "<C-b>",
+  'coc#float#has_scroll() ? "<c-r>=coc#float#scroll(0)<cr>" : "<Left>"', opts)
+
+
+
 vim.keymap.set('i', '<C-CR>', 'coc#pum#confirm()', { expr = true, silent = true })
 vim.keymap.set('i', '<C-space>', 'coc#refresh()', { expr = true, silent = true })
 

@@ -79,11 +79,6 @@ _G.packer_plugins = {
     path = "/Users/carloscoves/.local/share/nvim/site/pack/packer/start/coc.nvim",
     url = "https://github.com/neoclide/coc.nvim"
   },
-  ["copilot.vim"] = {
-    loaded = true,
-    path = "/Users/carloscoves/.local/share/nvim/site/pack/packer/start/copilot.vim",
-    url = "https://github.com/github/copilot.vim"
-  },
   gruvbox = {
     loaded = true,
     path = "/Users/carloscoves/.local/share/nvim/site/pack/packer/start/gruvbox",
@@ -194,8 +189,8 @@ time([[Defining packer_plugins]], false)
 -- Load plugins in order defined by `after`
 time([[Sequenced loading]], true)
 vim.cmd [[ packadd nvim-treesitter ]]
-vim.cmd [[ packadd nvim-treesitter-context ]]
 vim.cmd [[ packadd nvim-treesitter-textobjects ]]
+vim.cmd [[ packadd nvim-treesitter-context ]]
 time([[Sequenced loading]], false)
 
 _G._packer.inside_compile = false

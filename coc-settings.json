@@ -34,6 +34,5 @@
   "go.goplsOptions": {
     "gofumpt": true
   },
-  "Lua.telemetry.enable": true,
   "sumneko-lua.enableNvimLuaDev": true
 }
