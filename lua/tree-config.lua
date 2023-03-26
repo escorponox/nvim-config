@@ -64,8 +64,11 @@ require 'nvim-tree'.setup {
       quit_on_open = true
     },
   },
+  filters = {
+    custom = { '\\.DS_Store', '^\\.git', '\\.vscode' }
+  },
   renderer = {
-    special_files = { 'package.json', '.env' },
+    special_files = { 'package.json', '.env', 'go.mod', 'Makefile' },
     icons = {
       padding = '',
       show = {

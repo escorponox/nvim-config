@@ -10,6 +10,7 @@ require('packer').startup(function(use)
   use 'wbthomason/packer.nvim'
 
   use 'gruvbox-community/gruvbox'
+  use { "catppuccin/nvim", as = "catppuccin" }
 
   use {
     'nvim-treesitter/nvim-treesitter',
@@ -48,6 +49,7 @@ require('packer').startup(function(use)
   use {
     'kyazdani42/nvim-tree.lua',
   }
+  use 'github/copilot.vim'
 
   use { 'neoclide/coc.nvim', branch = 'release' }
   use 'escorponox/telescope-coc.nvim'
@@ -55,7 +57,6 @@ require('packer').startup(function(use)
   use 'rcarriga/nvim-notify'
 end)
 
-require('options')
 require('autocommands')
 require('keymaps')
 require('commands')
@@ -65,5 +66,7 @@ require('tree-config')
 require('treesitter-config')
 require('lualine-config')
 require('autopairs-config')
-
 require('coc-config')
+
+require('colorscheme')
+require('options')

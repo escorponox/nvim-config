@@ -1,9 +1,3 @@
-vim.o.background = 'dark'
-vim.g.gruvbox_italic = 1
-vim.g.gruvbox_contrast_dark = 'hard'
-vim.o.termguicolors = true
-vim.cmd [[colorscheme gruvbox]]
-
 vim.o.cursorline = true
 vim.o.mouse = ''
 vim.o.clipboard = 'unnamedplus'
