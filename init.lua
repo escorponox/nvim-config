@@ -11,6 +11,7 @@ require('packer').startup(function(use)
 
   use 'gruvbox-community/gruvbox'
   use { "catppuccin/nvim", as = "catppuccin" }
+  -- use "rebelot/kanagawa.nvim"
 
   use {
     'nvim-treesitter/nvim-treesitter',
