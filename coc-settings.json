@@ -34,5 +34,15 @@
   "go.goplsOptions": {
     "gofumpt": true
   },
-  "sumneko-lua.enableNvimLuaDev": true
+  "sumneko-lua.enableNvimLuaDev": true,
+  "Lua.workspace.checkThirdParty": false,
+  "languageserver": {
+    "terraform": {
+      "command": "terraform-ls",
+      "args": ["serve"],
+      "filetypes": ["terraform", "tf", "hcl"],
+      "rootPatterns": [".terraform", ".git"],
+      "initializationOptions": {}
+    }
+  }
 }

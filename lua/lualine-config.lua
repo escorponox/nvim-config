@@ -7,7 +7,7 @@ require 'lualine'.setup {
     lualine_b = {
       { 'diff', colored = true }
     },
-    lualine_c = { 'filename' },
+    lualine_c = { 'filetype', 'filename' },
     lualine_x = {
       {
         'diagnostics',
