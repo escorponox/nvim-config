@@ -12,15 +12,15 @@ require('gitsigns').setup({
     map('n', '<leader>hj', function()
       vim.schedule(function() gs.next_hunk() end)
       return '<Ignore>'
-    end, {expr=true})
+    end, { expr = true })
 
     map('n', '<leader>hk', function()
       vim.schedule(function() gs.prev_hunk() end)
       return '<Ignore>'
-    end, {expr=true})
+    end, { expr = true })
 
     -- Actions
-    map({'n', 'v'}, '<leader>hi', ':Gitsigns preview_hunk<CR>')
-    map({'n', 'v'}, '<leader>hu', ':Gitsigns reset_hunk<CR>')
+    map({ 'n', 'v' }, '<leader>hi', gs.preview_hunk)
+    map({ 'n', 'v' }, '<leader>hu', gs.reset_hunk)
   end
 })

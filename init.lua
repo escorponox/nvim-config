@@ -23,7 +23,11 @@ require('tree-config')
 require('treesitter-config')
 require('lualine-config')
 require('autopairs-config')
-require('coc-config')
+require('git-signs-config')
+
+require('lsp-config')
+require('cmp-config')
 
 require('colorscheme')
+require('ui-config')
 require('options')

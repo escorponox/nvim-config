@@ -17,7 +17,9 @@ require('telescope').setup {
       },
       n = {
         ["<C-q>"] = actions.send_to_qflist,
-        ["<C-s>"] = actions.send_selected_to_qflist
+        ["<C-s>"] = actions.send_selected_to_qflist,
+        ["s"] = actions.file_vsplit,
+        ["t"] = actions.file_tab,
       },
     },
     vimgrep_arguments = {
@@ -65,17 +67,27 @@ require('telescope').setup {
 }
 
 require('telescope').load_extension('fzf')
-require('telescope').load_extension('coc')
 
 local function grep_string()
   builtin.grep_string({ search = vim.fn.input('Grep For > ') })
+end
+
+local function lsp_definitions()
+  builtin.lsp_definitions({ jump_type = 'never', initial_mode = 'normal', show_line = false })
+end
+
+local function lsp_references()
+  builtin.lsp_references({ jump_type = 'never', initial_mode = 'normal', show_line = false })
 end
 
 vim.keymap.set('n', ',ff', builtin.find_files)
 vim.keymap.set('n', ',fg', grep_string)
 vim.keymap.set('n', ',ft', builtin.grep_string)
 
-vim.keymap.set('n', ',fe', ':Telescope buffers<CR>')
-vim.keymap.set('n', ',fs', ':Telescope git_status<CR>')
-vim.keymap.set('n', ',fr', ':Telescope coc references<CR>')
-vim.keymap.set('n', ',fq', ':Telescope quickfix<CR>')
+vim.keymap.set('n', ',fe', builtin.buffers)
+vim.keymap.set('n', ',fs', builtin.git_status)
+vim.keymap.set('n', ',fq', builtin.quickfix)
+
+
+vim.keymap.set('n', ',fr', lsp_references)
+vim.keymap.set('n', 'gd', lsp_definitions)
