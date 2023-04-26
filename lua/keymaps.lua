@@ -56,6 +56,8 @@ vim.keymap.set('n', ',n', ':bn<CR>')
 vim.keymap.set('n', ',z', [[<C-W>|]])
 vim.keymap.set('n', ',h', '<C-W>h')
 vim.keymap.set('n', ',l', '<C-W>l')
+vim.keymap.set('n', ',j', '<C-W>j')
+vim.keymap.set('n', ',k', '<C-W>k')
 vim.keymap.set('n', ',=', '<C-W>=')
 vim.keymap.set('n', ',x', '<C-W>x')
 vim.keymap.set('n', ',c', ':close<CR>')
@@ -67,8 +69,8 @@ vim.keymap.set('n', ',tr', ':tabclose<CR>')
 vim.keymap.set('n', ',tp', ':tabprevious<CR>')
 
 -- quickfix
-vim.keymap.set('n', ',j', ':cnext<CR>')
-vim.keymap.set('n', ',k', ':cprev<CR>')
+vim.keymap.set('n', '<C-J>', ':cnext<CR>')
+vim.keymap.set('n', '<C-K>', ':cprev<CR>')
 
 -- git
 vim.keymap.set('n', 'gb', ':Git blame<CR>')
