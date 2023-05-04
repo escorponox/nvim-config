@@ -20,10 +20,16 @@ return {
   require('plugins.cmp-config'),
   require('plugins.dap-config'),
 
-  'github/copilot.vim',
-  'tpope/vim-fugitive',
+  {
+    'tpope/vim-fugitive',
+    enabled = false,
+    keys = {
+      { "gb", ":Git blame<CR>", desc = "Git blame" }
+    }
+  },
   'tpope/vim-surround',
   'tpope/vim-repeat',
   'tpope/vim-commentary',
   'towolf/vim-helm',
+  'github/copilot.vim',
 }

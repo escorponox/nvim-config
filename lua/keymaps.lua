@@ -87,8 +87,6 @@ vim.keymap.set('n', ',sc', ':e ~/.config/nvim/init.lua<CR>')
 vim.keymap.set('n', ',sv', ':so ~/.config/nvim/init.lua<CR>')
 
 -- these keymaps are for plugins not configured in lazy
--- fugitive blame
-vim.keymap.set('n', 'gb', ':Git blame<CR>')
 
 -- copilot
 vim.keymap.set('i', '<C-d>', '<Plug>(copilot-next)', { silent = true })
