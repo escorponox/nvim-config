@@ -12,22 +12,8 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require('keymaps')
-
-require('lazy').setup('plugins')
-
+require('options')
 require('autocommands')
 require('commands')
 
-require('telescope-config')
-require('tree-config')
-require('treesitter-config')
-require('lualine-config')
-require('autopairs-config')
-require('git-signs-config')
-
-require('colorscheme')
-require('ui-config')
-require('options')
-
-require('lsp-config')
-require('cmp-config')
+require('lazy').setup('plugins')

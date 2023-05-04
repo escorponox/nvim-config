@@ -22,7 +22,4 @@ vim.wo.scl = 'yes'
 vim.o.backupcopy = 'yes'
 vim.o.scrolloff = 8
 vim.o.pumheight = 10
-
-vim.opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
-
-vim.notify = require('notify')
+vim.o.termguicolors = true
