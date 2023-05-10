@@ -25,7 +25,7 @@ return {
       -- Actions
       map({ 'n', 'v' }, '<leader>hi', gs.preview_hunk)
       map({ 'n', 'v' }, '<leader>hu', gs.reset_hunk)
-      map("n", 'gb', gs.blame_line)
+      -- map("n", 'gb', gs.blame_line)
     end
 
   }

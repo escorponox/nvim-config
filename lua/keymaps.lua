@@ -65,29 +65,25 @@ vim.keymap.set('n', ',tr', ':tabclose<CR>')
 vim.keymap.set('n', ',tp', ':tabprevious<CR>')
 
 -- quickfix
-vim.keymap.set('n', ',fj', ':cnext<CR>')
-vim.keymap.set('n', ',fk', ':cprev<CR>')
+vim.keymap.set('n', ',fj', ':cnext<CR>', { desc = 'quickfix next' })
+vim.keymap.set('n', ',fk', ':cprev<CR>', { desc = 'quickfix prev' })
 
 -- greatest remap ever
-vim.keymap.set('x', '<leader>p', [["_dP]])
+vim.keymap.set('x', '<leader>p', [["_dP]], { desc = 'persistent paste' })
 
 -- commands
-vim.keymap.set('n', ',aa', ':DuplicateLine<space>')
-vim.keymap.set('n', ',as', ':CopyLine<space>')
+vim.keymap.set('n', ',aa', ':DuplicateLine<space>', { desc = 'duplicate line' })
+vim.keymap.set('n', ',as', ':CopyLine<space>', { desc = 'copy line' })
 
 -- move selected line up/down
-vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
-vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
+vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv", { desc = 'move line down' })
+vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv", { desc = 'move line up' })
 
 -- keep cursor in place when joining lines
-vim.keymap.set("n", "J", "mzJ`z")
-
--- edit/save .vimrc
-vim.keymap.set('n', ',sc', ':e ~/.config/nvim/init.lua<CR>')
-vim.keymap.set('n', ',sv', ':so ~/.config/nvim/init.lua<CR>')
+vim.keymap.set("n", "J", "mzJ`z", { desc = 'join lines keeping cursor in place' })
 
 -- these keymaps are for plugins not configured in lazy
 
 -- copilot
-vim.keymap.set('i', '<C-d>', '<Plug>(copilot-next)', { silent = true })
-vim.keymap.set('i', '<C-u>', '<Plug>(copilot-previous)', { silent = true })
+vim.keymap.set('i', '<C-d>', '<Plug>(copilot-next)', { silent = true, desc = 'copilot next' })
+vim.keymap.set('i', '<C-u>', '<Plug>(copilot-previous)', { silent = true, desc = 'copilot previous' })
