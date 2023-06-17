@@ -27,9 +27,9 @@ return {
       renderer = {
         special_files = { 'package.json', '.env', 'go.mod', 'Makefile' },
         icons = {
-          padding = '',
+          padding = ' ',
           show = {
-            file = false,
+            file = true,
             folder = true,
             folder_arrow = true,
             git = false,
