@@ -4,7 +4,13 @@ return {
   version = false,
   dependencies = {
     { 'nvim-lua/plenary.nvim' },
-    { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
+    {
+      'nvim-telescope/telescope-fzf-native.nvim',
+      build = 'make',
+      config = function()
+        require('telescope').load_extension('fzf')
+      end
+    },
     -- {
     --   'nvim-telescope/telescope-fzf-native.nvim',
     --   build =
@@ -79,7 +85,6 @@ return {
         },
       }
     }
-    require('telescope').load_extension('fzf')
 
     local function grep_string()
       builtin.grep_string({ search = vim.fn.input('Grep For > ') })
