@@ -94,6 +94,11 @@ return {
       builtin.lsp_definitions({ jump_type = 'never', initial_mode = 'normal', show_line = false })
     end
 
+    local function lsp_implementations()
+      builtin.lsp_implementations({ jump_type = 'never', initial_mode = 'normal', show_line = false })
+    end
+
+
     local function lsp_references()
       builtin.lsp_references({ jump_type = 'never', initial_mode = 'normal', show_line = false })
     end
@@ -109,5 +114,6 @@ return {
 
     vim.keymap.set('n', ',fr', lsp_references)
     vim.keymap.set('n', 'gd', lsp_definitions)
+    vim.keymap.set('n', 'gi', lsp_implementations)
   end
 }

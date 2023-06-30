@@ -47,6 +47,7 @@ return {
     },
     {
       "theHamsta/nvim-dap-virtual-text",
+      enable = false,
       opts = {},
     },
     {
