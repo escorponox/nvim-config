@@ -17,13 +17,13 @@ return {
         {
           'diagnostics',
           colored = true,
-          sources = { 'coc' },
+          sources = { 'coc', 'nvim_diagnostic' },
           sections = { 'error', 'warn' },
-          diagnostics_color = {
-            -- Same values like general color option can be used here.
-            error = { fg = 167 }, -- changes diagnostic's error color
-            warn  = { fg = 208 }, -- changes diagnostic's warn color
-          },
+          -- diagnostics_color = {
+          -- Same values like general color option can be used here.
+          -- error = { fg = 167 }, -- changes diagnostic's error color
+          -- warn  = { fg = 208 }, -- changes diagnostic's warn color
+          -- },
           symbols = { error = 'E', warn = 'W', info = 'I', hint = 'H' },
         }
       }

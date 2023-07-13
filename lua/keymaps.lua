@@ -58,6 +58,11 @@ vim.keymap.set('n', ',=', '<C-W>=')
 vim.keymap.set('n', ',x', '<C-W>x')
 vim.keymap.set('n', ',c', ':close<CR>')
 
+-- windows resize
+vim.keymap.set('n', ',+', ':vertical resize +10<CR>', { desc = 'vert resize +10' })
+vim.keymap.set('n', ',-', ':vertical resize -10<CR>', { desc = 'vert resize -10' })
+
+
 -- tabs
 vim.keymap.set('n', ',tg', ':tabnew<CR>')
 vim.keymap.set('n', ',tt', ':tabnext<CR>')
