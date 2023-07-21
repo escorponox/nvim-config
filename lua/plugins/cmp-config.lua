@@ -9,7 +9,7 @@ return {
     'L3MON4D3/LuaSnip'
   },
   init = function()
-    vim.opt.completeopt = "menu,menuone,noinsert"
+    vim.opt.completeopt = "menu,menuone,noinsert,noselect"
   end,
   config = function()
     local cmp = require('cmp')

@@ -40,6 +40,7 @@ return {
     })
 
     local capabilities = require('cmp_nvim_lsp').default_capabilities()
+    capabilities.textDocument.completion.completionItem.snippetSupport = false
 
     -- Golang
     lspconfig.gopls.setup({
