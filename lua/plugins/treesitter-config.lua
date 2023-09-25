@@ -7,7 +7,12 @@ return {
   end,
   dependencies = {
     'nvim-treesitter/nvim-treesitter-textobjects',
-    'nvim-treesitter/nvim-treesitter-context'
+    {
+      'nvim-treesitter/nvim-treesitter-context',
+      opts = {
+        max_lines = 2,
+      }
+    }
   },
   config = function(_, opts)
     require 'nvim-treesitter.configs'.setup(opts)

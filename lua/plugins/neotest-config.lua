@@ -5,6 +5,7 @@ return {
     "nvim-lua/plenary.nvim",
     "nvim-treesitter/nvim-treesitter",
   },
+  enabled = false,
   opts = {},
   config = function(_, opts)
     local neotest_ns = vim.api.nvim_create_namespace("neotest")
