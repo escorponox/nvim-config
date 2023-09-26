@@ -12,6 +12,7 @@ return {
     -- Global mappings
     vim.keymap.set('n', '<C-k>', vim.diagnostic.goto_prev)
     vim.keymap.set('n', '<C-j>', vim.diagnostic.goto_next)
+    vim.keymap.set('n', '<C-h>', function() vim.lsp.inlay_hint(0, nil) end, { desc = "Toggle Inlay Hints"})
     local lspconfig = require('lspconfig')
 
 
@@ -50,7 +51,11 @@ return {
         gopls = {
           gofumpt = true,
           analyses = { unusedparams = true, shadow = true },
-          staticcheck = true
+          staticcheck = true,
+          hints = {
+            parameterNames = true,
+            functionTypeParameters = true
+          }
         }
       },
       init_options = { usePlaceholders = true }
