@@ -103,17 +103,22 @@ return {
       builtin.lsp_references({ jump_type = 'never', initial_mode = 'normal', show_line = false })
     end
 
-    vim.keymap.set('n', ',ff', builtin.find_files)
-    vim.keymap.set('n', ',fg', grep_string)
-    vim.keymap.set('n', ',ft', builtin.grep_string)
+    local function old_files()
+      builtin.oldfiles({ only_cwd = true })
+    end
 
-    vim.keymap.set('n', ',fe', builtin.buffers)
-    vim.keymap.set('n', ',fs', builtin.git_status)
-    vim.keymap.set('n', ',fq', builtin.quickfix)
+    vim.keymap.set('n', ',ff', builtin.find_files, { desc = 'Find Files' })
+    vim.keymap.set('n', ',fg', grep_string, { desc = 'Grep String' })
+    vim.keymap.set('n', ',ft', builtin.grep_string, { desc = 'Grep word' })
+    vim.keymap.set('n', ',fm', old_files, { desc = 'Find old files' })
+
+    vim.keymap.set('n', ',fe', builtin.buffers, { desc = 'Find buffers' })
+    vim.keymap.set('n', ',fs', builtin.git_status, { desc = 'Find git status' })
+    vim.keymap.set('n', ',fq', builtin.quickfix, { desc = 'Find quickfix' })
 
 
-    vim.keymap.set('n', ',fr', lsp_references)
-    vim.keymap.set('n', 'gd', lsp_definitions)
-    vim.keymap.set('n', 'gi', lsp_implementations)
+    vim.keymap.set('n', ',fr', lsp_references, { desc = 'Find references' })
+    vim.keymap.set('n', 'gd', lsp_definitions, { desc = 'Find definitions' })
+    vim.keymap.set('n', 'gi', lsp_implementations, { desc = 'Find implementations' })
   end
 }
