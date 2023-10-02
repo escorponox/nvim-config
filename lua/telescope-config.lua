@@ -71,9 +71,14 @@ local function grep_string()
   builtin.grep_string({ search = vim.fn.input('Grep For > ') })
 end
 
+local function old_files()
+  builtin.oldfiles({ only_cwd = true })
+end
+
 vim.keymap.set('n', ',ff', builtin.find_files)
 vim.keymap.set('n', ',fg', grep_string)
 vim.keymap.set('n', ',ft', builtin.grep_string)
+vim.keymap.set('n', ',fm', old_files, { desc = 'Find old files' })
 
 vim.keymap.set('n', ',fe', ':Telescope buffers<CR>')
 vim.keymap.set('n', ',fs', ':Telescope git_status<CR>')

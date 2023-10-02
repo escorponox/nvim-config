@@ -5,7 +5,16 @@ return {
   {
     'nvim-treesitter/nvim-treesitter',
     build = function() pcall(require('nvim-treesitter.install').update { with_sync = true }) end,
-    dependencies = { 'nvim-treesitter/nvim-treesitter-textobjects', 'nvim-treesitter/nvim-treesitter-context' }
+    dependencies = {
+      'nvim-treesitter/nvim-treesitter-textobjects',
+      {
+        'nvim-treesitter/nvim-treesitter-context',
+        opts = {
+          max_lines = 2,
+        }
+      }
+    }
+
   },
   {
     'nvim-telescope/telescope.nvim',
@@ -18,7 +27,6 @@ return {
   --   build =
   --   'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build'
   -- },
-  'ilAYAli/scMRU.nvim',
   'mbbill/undotree',
   'tpope/vim-fugitive',
   'tpope/vim-surround',

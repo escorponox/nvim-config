@@ -17,10 +17,6 @@ vim.keymap.set('n', ',rg', ':%s//g<Left><Left>')
 -- find and replace word
 vim.keymap.set("n", ",rw", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
 
--- fuzzy find
-vim.keymap.set('n', ',fm', ':Mru<CR>')
-vim.keymap.set('n', ',fe', ':Mfu<CR>')
-
 -- close buffers
 vim.keymap.set('n', ',d', ':bd<CR>')
 vim.keymap.set('n', ',D', ':bufdo bd<CR>')
