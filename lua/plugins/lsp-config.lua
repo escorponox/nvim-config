@@ -12,7 +12,7 @@ return {
     -- Global mappings
     vim.keymap.set('n', '<C-k>', vim.diagnostic.goto_prev)
     vim.keymap.set('n', '<C-j>', vim.diagnostic.goto_next)
-    vim.keymap.set('n', '<C-h>', function() vim.lsp.inlay_hint(0, nil) end, { desc = "Toggle Inlay Hints"})
+    vim.keymap.set('n', '<C-h>', function() vim.lsp.inlay_hint(0, nil) end, { desc = "Toggle Inlay Hints" })
     local lspconfig = require('lspconfig')
 
 
@@ -27,7 +27,7 @@ return {
 
         vim.keymap.set('n', ',fh', vim.lsp.buf.hover, bufopts)
         local client = vim.lsp.get_client_by_id(ev.data.client_id)
-        if client.supports_method("textDocument/formatting") then
+        if client ~= nil and client.supports_method("textDocument/formatting") then
           vim.api.nvim_clear_autocmds({ group = formatGroup, buffer = ev.buf })
           vim.api.nvim_create_autocmd("BufWritePre", {
             group = formatGroup,
