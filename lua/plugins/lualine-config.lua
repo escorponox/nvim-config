@@ -5,7 +5,8 @@ return {
   end,
   opts = {
     options = {
-      theme = "catppuccin"
+      theme = "auto"
+      --theme = "catppuccin"
     },
     sections = {
       lualine_a = {},

@@ -1,4 +1,4 @@
-local scheme = "catppuccin"
+local scheme = "kanagawa"
 
 
 if scheme == "gruvbox" then
@@ -55,6 +55,16 @@ elseif scheme == "catppuccin" then
       vim.o.background = 'dark'
       require("catppuccin").setup(opts)
       vim.cmd.colorscheme "catppuccin"
+    end
+
+  }
+elseif scheme == "kanagawa" then
+  return {
+    "rebelot/kanagawa.nvim",
+    config = function(_, opts)
+      vim.o.background = 'dark'
+      require("kanagawa").setup(opts)
+      vim.cmd.colorscheme "kanagawa"
     end
 
   }
