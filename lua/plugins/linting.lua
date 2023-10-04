@@ -5,10 +5,10 @@ return {
     -- Event to trigger linters
     events = { "BufWritePost", "BufReadPost", "InsertLeave" },
     linters_by_ft = {
-      ["javascript"] = { "eslint" },
-      ["javascriptreact"] = { "eslint" },
-      ["typescript"] = { "eslint" },
-      ["typescriptreact"] = { "eslint" },
+      ["javascript"] = { { "eslint" }, { ignore_errors = true } },
+      ["javascriptreact"] = { { "eslint" }, { ignore_errors = true } },
+      ["typescript"] = { { "eslint" }, { ignore_errors = true } },
+      ["typescriptreact"] = { { "eslint" }, { ignore_errors = true } },
     },
     -- LazyVim extension to easily override linter options
     -- or add custom linters.
@@ -45,17 +45,18 @@ return {
     end
 
     function M.lint()
-      local lint = require("lint")
-      local names = lint.linters_by_ft[vim.bo.filetype] or {}
+      local lint_module = require("lint")
+      local config = lint_module.linters_by_ft[vim.bo.filetype] or {}
+      local linter_name, config_opts = config[1], config[2] or {}
       local ctx = { filename = vim.api.nvim_buf_get_name(0) }
       ctx.dirname = vim.fn.fnamemodify(ctx.filename, ":h")
-      names = vim.tbl_filter(function(name)
-        local linter = lint.linters[name]
+      linter_name = vim.tbl_filter(function(name)
+        local linter = lint_module.linters[name]
         return linter and not (linter.condition and not linter.condition(ctx))
-      end, names)
+      end, linter_name)
 
-      if #names > 0 then
-        lint.try_lint(names)
+      if #linter_name > 0 then
+        lint_module.try_lint(linter_name, config_opts)
       end
     end
 
