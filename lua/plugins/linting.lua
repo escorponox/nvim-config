@@ -47,7 +47,7 @@ return {
     function M.lint()
       local lint_module = require("lint")
       local config = lint_module.linters_by_ft[vim.bo.filetype] or {}
-      local linter_name, config_opts = config[1], config[2] or {}
+      local linter_name, config_opts = config[1] or {}, config[2] or {}
       local ctx = { filename = vim.api.nvim_buf_get_name(0) }
       ctx.dirname = vim.fn.fnamemodify(ctx.filename, ":h")
       linter_name = vim.tbl_filter(function(name)
