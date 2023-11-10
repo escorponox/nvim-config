@@ -1,24 +1,22 @@
 local scheme = "kanagawa"
 
-
 if scheme == "gruvbox" then
   return {
-    'gruvbox-community/gruvbox',
+    "gruvbox-community/gruvbox",
     init = function()
-      vim.o.background = 'dark'
+      vim.o.background = "dark"
       vim.g.gruvbox_italic = 1
-      vim.g.gruvbox_contrast_dark = 'hard'
+      vim.g.gruvbox_contrast_dark = "hard"
     end,
     config = function()
-      vim.cmd.colorscheme "gruvbox"
+      vim.cmd.colorscheme("gruvbox")
       vim.api.nvim_set_hl(0, "NvimTreeRootFolder", { link = "GruvBoxPurple" })
       vim.api.nvim_set_hl(0, "NvimTreeFolderName", { link = "GruvBoxAqua" })
       vim.api.nvim_set_hl(0, "NvimTreeOpenedFolderName", { link = "GruvBoxGreen" })
       vim.api.nvim_set_hl(0, "NvimTreeEmpyFolderName", { link = "GruvBoxGray" })
       vim.api.nvim_set_hl(0, "NvimTreeGitIgnored", { link = "GruvBoxGray" })
       vim.api.nvim_set_hl(0, "NvimTreeIndentMarker", { link = "GruvBoxOrange" })
-    end
-
+    end,
   }
 elseif scheme == "catppuccin" then
   return {
@@ -49,23 +47,21 @@ elseif scheme == "catppuccin" then
           enabled = true,
           enable_ui = true,
         },
-      }
+      },
     },
     config = function(_, opts)
-      vim.o.background = 'dark'
+      vim.o.background = "dark"
       require("catppuccin").setup(opts)
-      vim.cmd.colorscheme "catppuccin"
-    end
-
+      vim.cmd.colorscheme("catppuccin")
+    end,
   }
 elseif scheme == "kanagawa" then
   return {
     "rebelot/kanagawa.nvim",
     config = function(_, opts)
-      vim.o.background = 'dark'
+      vim.o.background = "dark"
       require("kanagawa").setup(opts)
-      vim.cmd.colorscheme "kanagawa"
-    end
-
+      vim.cmd.colorscheme("kanagawa")
+    end,
   }
 end

@@ -1,9 +1,10 @@
 return {
-  'ThePrimeagen/harpoon',
+  "ThePrimeagen/harpoon",
   lazy = true,
   dependencies = {
-    'nvim-lua/plenary.nvim',
+    "nvim-lua/plenary.nvim",
   },
+  --stylua: ignore
   keys = {
     { ',ta', function() require('harpoon.mark').add_file() end,        desc = 'Harpoon add file' },
     { ',tm', function() require('harpoon.ui').toggle_quick_menu() end, desc = 'Harpoon menu' },

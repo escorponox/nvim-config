@@ -1,5 +1,5 @@
 return {
-  'lewis6991/gitsigns.nvim',
+  "lewis6991/gitsigns.nvim",
   event = { "BufReadPre", "BufNewFile" },
   opts = {
     on_attach = function(bufnr)
@@ -12,21 +12,24 @@ return {
       end
 
       -- Navigation
-      map('n', '<leader>hj', function()
-        vim.schedule(function() gs.next_hunk() end)
-        return '<Ignore>'
+      map("n", "<leader>hj", function()
+        vim.schedule(function()
+          gs.next_hunk()
+        end)
+        return "<Ignore>"
       end, { expr = true })
 
-      map('n', '<leader>hk', function()
-        vim.schedule(function() gs.prev_hunk() end)
-        return '<Ignore>'
+      map("n", "<leader>hk", function()
+        vim.schedule(function()
+          gs.prev_hunk()
+        end)
+        return "<Ignore>"
       end, { expr = true })
 
       -- Actions
-      map({ 'n', 'v' }, '<leader>hi', gs.preview_hunk)
-      map({ 'n', 'v' }, '<leader>hu', gs.reset_hunk)
+      map({ "n", "v" }, "<leader>hi", gs.preview_hunk)
+      map({ "n", "v" }, "<leader>hu", gs.reset_hunk)
       -- map("n", 'gb', gs.blame_line)
-    end
-
-  }
+    end,
+  },
 }

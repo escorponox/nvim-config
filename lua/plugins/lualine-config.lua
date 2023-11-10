@@ -1,58 +1,59 @@
 return {
-  'nvim-lualine/lualine.nvim',
+  "nvim-lualine/lualine.nvim",
   config = function(_, opts)
-    require('lualine').setup(opts)
+    require("lualine").setup(opts)
   end,
   opts = {
     options = {
-      theme = "auto"
+      theme = "auto",
       --theme = "catppuccin"
     },
     sections = {
       lualine_a = {},
       lualine_b = {
-        { 'diff', colored = true }
+        { "diff", colored = true },
       },
-      lualine_c = { 'filetype', 'filename' },
+      lualine_c = { "filetype", "filename" },
       lualine_x = {
         {
-          'diagnostics',
+          "diagnostics",
           colored = true,
-          sources = { 'coc', 'nvim_diagnostic' },
-          sections = { 'error', 'warn' },
+          sources = { "coc", "nvim_diagnostic" },
+          sections = { "error", "warn" },
           -- diagnostics_color = {
           -- Same values like general color option can be used here.
           -- error = { fg = 167 }, -- changes diagnostic's error color
           -- warn  = { fg = 208 }, -- changes diagnostic's warn color
           -- },
-          symbols = { error = 'E', warn = 'W', info = 'I', hint = 'H' },
-        }
-      }
+          symbols = { error = "E", warn = "W", info = "I", hint = "H" },
+        },
+      },
     },
     tabline = {
       lualine_a = {
         {
-          'mode',
-          fmt = function(str) return str:sub(1, 1) end
-        }
+          "mode",
+          fmt = function(str)
+            return str:sub(1, 1)
+          end,
+        },
       },
-      lualine_b = { 'branch' },
+      lualine_b = { "branch" },
       lualine_c = {
         {
-          'filename',
+          "filename",
           path = 1,
           shorting_target = 10,
-        }
+        },
       },
       lualine_x = {},
       lualine_y = {},
       lualine_z = {
         {
-          'tabs',
+          "tabs",
           mode = 2, -- 0: Shows tab_nr 1: Shows tab_name 2: Shows tab_nr + tab_name
-        }
+        },
       },
-    }
-
-  }
+    },
+  },
 }

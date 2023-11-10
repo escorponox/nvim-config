@@ -1,14 +1,14 @@
 return {
-  'stevearc/dressing.nvim',
+  "stevearc/dressing.nvim",
   opts = {
     select = {
-      backend = 'builtin',
+      backend = "builtin",
       builtin = {
-        relative = 'cursor',
+        relative = "cursor",
       },
-    }
+    },
   },
   config = function(_, opts)
-    require('dressing').setup(opts)
-  end
+    require("dressing").setup(opts)
+  end,
 }

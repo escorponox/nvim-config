@@ -1,21 +1,21 @@
 return {
-  'nvim-treesitter/nvim-treesitter',
+  "nvim-treesitter/nvim-treesitter",
   event = { "BufReadPost", "BufNewFile" },
   version = false,
   build = function()
-    pcall(require('nvim-treesitter.install').update { with_sync = true })
+    pcall(require("nvim-treesitter.install").update({ with_sync = true }))
   end,
   dependencies = {
-    'nvim-treesitter/nvim-treesitter-textobjects',
+    "nvim-treesitter/nvim-treesitter-textobjects",
     {
-      'nvim-treesitter/nvim-treesitter-context',
+      "nvim-treesitter/nvim-treesitter-context",
       opts = {
         max_lines = 2,
-      }
-    }
+      },
+    },
   },
   config = function(_, opts)
-    require 'nvim-treesitter.configs'.setup(opts)
+    require("nvim-treesitter.configs").setup(opts)
   end,
   opts = {
     ensure_installed = {
@@ -46,17 +46,17 @@ return {
       "vim",
       "vue",
       "yaml",
-      "zig"
-    },               -- one of "all" or a list of languages
+      "zig",
+    }, -- one of "all" or a list of languages
     highlight = {
       enable = true, -- false will disable the whole extension
       additional_vim_regex_highlighting = false,
     },
     autotag = {
-      enable = false -- sometimes it messes up the whole file
+      enable = false, -- sometimes it messes up the whole file
     },
     indent = {
-      enable = true
+      enable = true,
     },
     incremental_selection = {
       enable = false,
@@ -66,5 +66,5 @@ return {
       --   node_decremental = "gd", -- mapping to navigate nodes in current file
       -- },
     },
-  }
+  },
 }
