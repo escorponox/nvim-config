@@ -17,7 +17,6 @@ return {
       vim.lsp.inlay_hint(0, nil)
     end, { desc = "Toggle Inlay Hints" })
     local lspconfig = require("lspconfig")
-    local copilot_cmp = require("copilot_cmp")
 
     local formatGroup = vim.api.nvim_create_augroup("LspFormatting", {})
     vim.api.nvim_create_autocmd("LspAttach", {
@@ -29,7 +28,25 @@ return {
         vim.keymap.set("n", "ga", vim.lsp.buf.code_action, bufopts)
 
         vim.keymap.set("n", "K", vim.lsp.buf.hover, bufopts)
+
         local client = vim.lsp.get_client_by_id(ev.data.client_id)
+
+        if client ~= nil and client.name == "gopls" then
+          if not client.server_capabilities.semanticTokensProvider then
+            local semantic = client.config.capabilities.textDocument.semanticTokens
+            if semantic ~= nil then
+              client.server_capabilities.semanticTokensProvider = {
+                full = true,
+                legend = {
+                  tokenTypes = semantic.tokenTypes,
+                  tokenModifiers = semantic.tokenModifiers,
+                },
+                range = true,
+              }
+            end
+          end
+        end
+
         local should_format = f.should_format_with_lsp(vim.bo[ev.buf].filetype)
         if client ~= nil and should_format and client.supports_method("textDocument/formatting") then
           vim.api.nvim_clear_autocmds({ group = formatGroup, buffer = ev.buf })
@@ -40,9 +57,6 @@ return {
               vim.lsp.buf.format({ bufnr = args.buf, async = false })
             end,
           })
-        end
-        if client ~= nil and client.name == "copilot" then
-          copilot_cmp._on_insert_enter({})
         end
       end,
     })
@@ -61,7 +75,7 @@ return {
           usePlaceholders = true,
           completeUnimported = true,
           directoryFilters = { "-.git", "-.vscode", "-.idea", "-.vscode-test", "-node_modules" },
-          semanticTokens = false,
+          semanticTokens = true,
           analyses = {
             shadow = true,
             fieldalignment = true,
@@ -112,5 +126,8 @@ return {
 
     -- terraform
     lspconfig.terraformls.setup({ capabilities = capabilities })
+
+    -- tailwindCSS
+    lspconfig.tailwindcss.setup({})
   end,
 }

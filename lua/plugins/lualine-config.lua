@@ -6,7 +6,8 @@ return {
   opts = {
     options = {
       theme = "auto",
-      --theme = "catppuccin"
+      -- theme = "catppuccin",
+      -- theme = "tokyonight",
     },
     sections = {
       lualine_a = {},
@@ -18,7 +19,7 @@ return {
         {
           "diagnostics",
           colored = true,
-          sources = { "coc", "nvim_diagnostic" },
+          sources = { "nvim_diagnostic" },
           sections = { "error", "warn" },
           -- diagnostics_color = {
           -- Same values like general color option can be used here.

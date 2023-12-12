@@ -1,27 +1,3 @@
-local copilot_dep = {
-  "zbirenbaum/copilot.lua",
-  cmd = "Copilot",
-  build = ":Copilot auth",
-  opts = {
-    suggestion = { enabled = false },
-    panel = { enabled = false },
-    filetypes = {
-      markdown = true,
-      help = true,
-    },
-  },
-}
-
-local copilot_cmp_dep = {
-  "zbirenbaum/copilot-cmp",
-  dependencies = copilot_dep,
-  opts = {},
-  config = function(_, opts)
-    local copilot_cmp = require("copilot_cmp")
-    copilot_cmp.setup(opts)
-  end,
-}
-
 return {
   "hrsh7th/nvim-cmp",
   event = "InsertEnter",
@@ -31,7 +7,6 @@ return {
     "hrsh7th/cmp-buffer",
     "hrsh7th/cmp-path",
     "L3MON4D3/LuaSnip",
-    copilot_cmp_dep,
   },
   init = function()
     vim.opt.completeopt = "menu,menuone,noinsert,noselect"
@@ -64,7 +39,7 @@ return {
         }),
       },
       sources = {
-        { name = "copilot", group_index = 2 },
+        -- { name = "copilot", group_index = 1 },
         { name = "nvim_lsp", group_index = 2 },
         { name = "buffer", group_index = 2 },
         { name = "path", group_index = 2 },

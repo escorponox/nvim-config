@@ -3,7 +3,7 @@ return {
   "tpope/vim-repeat",
   "tpope/vim-commentary",
   "towolf/vim-helm",
-  -- "github/copilot.vim",
+  "github/copilot.vim",
   {
     "m4xshen/hardtime.nvim",
     enabled = false,

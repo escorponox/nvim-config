@@ -1,24 +1,26 @@
 return {
   "mfussenegger/nvim-dap",
-  enabled = false,
+  enabled = true,
   dependencies = {
     {
       "rcarriga/nvim-dap-ui",
-      keys = { {
-        "<leader>du",
-        function()
-          require("dapui").toggle({})
-        end,
-        desc = "Dap UI",
-      } },
+      keys = {
+        {
+          "<leader>du",
+          function()
+            require("dapui").toggle({})
+          end,
+          desc = "Dap UI",
+        },
+      },
       opts = {
         icons = {
           expanded = "",
           collapsed = "",
         },
-        mappings = {
-          expand = "o",
-        },
+        -- mappings = {
+        --   expand = "o",
+        -- },
         expand_lines = false,
         layouts = {
           {
