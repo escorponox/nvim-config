@@ -73,7 +73,7 @@ elseif scheme == "kanagawa" then
         palette = {},
         theme = { wave = {}, lotus = {}, dragon = {}, all = {} },
       },
-      overrides = function(colors) -- add/modify highlights
+      overrides = function() -- add/modify highlights
         return {}
       end,
       theme = "wave", -- Load "wave" theme when 'background' option is not set
@@ -83,7 +83,7 @@ elseif scheme == "kanagawa" then
       },
     },
     config = function(_, opts)
-      vim.o.background = "dark"
+      -- vim.o.background = "dark"
       require("kanagawa").setup(opts)
       vim.cmd.colorscheme("kanagawa")
     end,
@@ -93,9 +93,12 @@ elseif scheme == "tokyonight" then
     "folke/tokyonight.nvim",
     lazy = false,
     priority = 1000,
-    opts = {},
+    opts = {
+      style = "storm",
+      light_style = "day",
+    },
     config = function(_, opts)
-      vim.o.background = "dark"
+      -- vim.o.background = "dark"
       require("tokyonight").setup(opts)
       vim.cmd.colorscheme("tokyonight-storm")
     end,
