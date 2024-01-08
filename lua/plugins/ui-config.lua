@@ -48,8 +48,11 @@ return {
   },
   {
     "j-hui/fidget.nvim",
-    tag = "v1.1.0",
+    tag = "v1.2.0",
     enabled = true,
+    config = function(_, opts)
+      require("fidget").setup(opts)
+    end,
   },
   {
     "echasnovski/mini.indentscope",
