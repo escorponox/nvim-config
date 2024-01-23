@@ -117,8 +117,8 @@ return {
 
         vim.keymap.set("n", "s", api.node.open.vertical, { buffer = bufnr })
         vim.keymap.set("n", "t", api.node.open.tab, { buffer = bufnr })
-        vim.keymap.set("n", "<leader>cc", inject_node(template_fn("component")), { buffer = bufnr })
-        vim.keymap.set("n", "<leader>ch", inject_node(template_fn("hook")), { buffer = bufnr })
+        -- vim.keymap.set("n", "<leader>cc", inject_node(template_fn("component")), { buffer = bufnr })
+        -- vim.keymap.set("n", "<leader>ch", inject_node(template_fn("hook")), { buffer = bufnr })
         vim.keymap.set("n", "<C-]>", api.tree.change_root_to_node, opts("CD"))
         vim.keymap.set("n", "<C-e>", api.node.open.replace_tree_buffer, opts("Open: In Place"))
         vim.keymap.set("n", "<C-k>", api.node.show_info_popup, opts("Info"))

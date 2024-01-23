@@ -23,3 +23,4 @@ vim.o.backupcopy = "yes"
 vim.o.scrolloff = 8
 vim.o.pumheight = 10
 vim.o.termguicolors = true
+vim.o.sessionoptions = "blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions"

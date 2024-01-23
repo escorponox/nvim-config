@@ -1,62 +1,59 @@
-local scheme = "kanagawa"
-
-if scheme == "gruvbox" then
-  return {
-    "gruvbox-community/gruvbox",
-    init = function()
-      vim.o.background = "dark"
-      vim.g.gruvbox_italic = 1
-      vim.g.gruvbox_contrast_dark = "hard"
-    end,
-    config = function()
-      vim.cmd.colorscheme("gruvbox")
-      vim.api.nvim_set_hl(0, "NvimTreeRootFolder", { link = "GruvBoxPurple" })
-      vim.api.nvim_set_hl(0, "NvimTreeFolderName", { link = "GruvBoxAqua" })
-      vim.api.nvim_set_hl(0, "NvimTreeOpenedFolderName", { link = "GruvBoxGreen" })
-      vim.api.nvim_set_hl(0, "NvimTreeEmpyFolderName", { link = "GruvBoxGray" })
-      vim.api.nvim_set_hl(0, "NvimTreeGitIgnored", { link = "GruvBoxGray" })
-      vim.api.nvim_set_hl(0, "NvimTreeIndentMarker", { link = "GruvBoxOrange" })
-    end,
-  }
-elseif scheme == "catppuccin" then
-  return {
-    "catppuccin/nvim",
-    name = "catppuccin",
-    opts = {
-      flavour = "latte",
-      integrations = {
-        coc_nvim = true,
-        nvimtree = true,
-        notify = true,
-        native_lsp = {
-          enabled = true,
-          virtual_text = {
-            errors = { "italic" },
-            hints = { "italic" },
-            warnings = { "italic" },
-            information = { "italic" },
-          },
-          underlines = {
-            errors = { "underline" },
-            hints = { "underline" },
-            warnings = { "underline" },
-            information = { "underline" },
-          },
+local gruvbox = {
+  "gruvbox-community/gruvbox",
+  init = function()
+    vim.o.background = "dark"
+    vim.g.gruvbox_italic = 1
+    vim.g.gruvbox_contrast_dark = "hard"
+  end,
+  config = function()
+    vim.cmd.colorscheme("gruvbox")
+    vim.api.nvim_set_hl(0, "NvimTreeRootFolder", { link = "GruvBoxPurple" })
+    vim.api.nvim_set_hl(0, "NvimTreeFolderName", { link = "GruvBoxAqua" })
+    vim.api.nvim_set_hl(0, "NvimTreeOpenedFolderName", { link = "GruvBoxGreen" })
+    vim.api.nvim_set_hl(0, "NvimTreeEmpyFolderName", { link = "GruvBoxGray" })
+    vim.api.nvim_set_hl(0, "NvimTreeGitIgnored", { link = "GruvBoxGray" })
+    vim.api.nvim_set_hl(0, "NvimTreeIndentMarker", { link = "GruvBoxOrange" })
+  end,
+}
+local catppuccin = {
+  "catppuccin/nvim",
+  name = "catppuccin",
+  opts = {
+    flavour = "latte",
+    integrations = {
+      coc_nvim = true,
+      nvimtree = true,
+      notify = true,
+      native_lsp = {
+        enabled = true,
+        virtual_text = {
+          errors = { "italic" },
+          hints = { "italic" },
+          warnings = { "italic" },
+          information = { "italic" },
         },
-        dap = {
-          enabled = true,
-          enable_ui = true,
+        underlines = {
+          errors = { "underline" },
+          hints = { "underline" },
+          warnings = { "underline" },
+          information = { "underline" },
         },
       },
+      dap = {
+        enabled = true,
+        enable_ui = true,
+      },
     },
-    config = function(_, opts)
-      vim.o.background = "dark"
-      require("catppuccin").setup(opts)
-      vim.cmd.colorscheme("catppuccin")
-    end,
-  }
-elseif scheme == "kanagawa" then
-  return {
+  },
+  config = function(_, opts)
+    vim.o.background = "dark"
+    require("catppuccin").setup(opts)
+    vim.cmd.colorscheme("catppuccin")
+  end,
+}
+
+return {
+  {
     "rebelot/kanagawa.nvim",
     opts = {
       compile = false, -- enable compiling the colorscheme
@@ -83,13 +80,11 @@ elseif scheme == "kanagawa" then
       },
     },
     config = function(_, opts)
-      -- vim.o.background = "dark"
       require("kanagawa").setup(opts)
       vim.cmd.colorscheme("kanagawa")
     end,
-  }
-elseif scheme == "tokyonight" then
-  return {
+  },
+  {
     "folke/tokyonight.nvim",
     lazy = false,
     priority = 1000,
@@ -98,9 +93,7 @@ elseif scheme == "tokyonight" then
       light_style = "day",
     },
     config = function(_, opts)
-      -- vim.o.background = "dark"
       require("tokyonight").setup(opts)
-      vim.cmd.colorscheme("tokyonight-storm")
     end,
-  }
-end
+  },
+}

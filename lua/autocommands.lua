@@ -29,3 +29,16 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 --     end
 --   end,
 -- })
+
+local ColorSchemeGrp = vim.api.nvim_create_augroup("ColorSchemeGrp", { clear = true })
+vim.api.nvim_create_autocmd("OptionSet", {
+  group = ColorSchemeGrp,
+  pattern = "background",
+  callback = function()
+    if vim.o.background == "light" then
+      vim.cmd.colorscheme("tokyonight-day")
+    else
+      vim.cmd.colorscheme("kanagawa")
+    end
+  end,
+})

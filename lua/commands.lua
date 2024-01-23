@@ -11,7 +11,9 @@ end, { nargs = 1 })
 create_cmd("ToggleBackground", function()
   if vim.o.background == "dark" then
     vim.o.background = "light"
+    vim.cmd.colorscheme("tokyonight-day")
   else
     vim.o.background = "dark"
+    vim.cmd.colorscheme("kanagawa")
   end
 end, {})
