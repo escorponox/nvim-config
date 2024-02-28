@@ -1,6 +1,6 @@
 return {
   "williamboman/mason.nvim",
-  opts = { ensure_installed = { "prettier", "tailwindcss-language-server", "typescript-language-server" } },
+  opts = { ensure_installed = { "prettier", "tailwindcss-language-server" } },
   config = function(_, opts)
     require("mason").setup(opts)
     local mr = require("mason-registry")

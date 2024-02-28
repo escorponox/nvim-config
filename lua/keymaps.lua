@@ -73,7 +73,7 @@ vim.keymap.set("n", ",fj", ":cnext<CR>", { desc = "quickfix next" })
 vim.keymap.set("n", ",fk", ":cprev<CR>", { desc = "quickfix prev" })
 
 -- greatest remap ever
-vim.keymap.set("x", "<leader>p", [["_dP]], { desc = "persistent paste" })
+vim.keymap.set("n", "<leader>p", [[viw"_dP]], { desc = "replace word persistent paste" })
 
 -- commands
 vim.keymap.set("n", ",aa", ":DuplicateLine<space>", { desc = "duplicate line" })

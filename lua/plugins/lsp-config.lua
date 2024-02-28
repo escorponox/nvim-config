@@ -128,6 +128,17 @@ return {
     lspconfig.terraformls.setup({ capabilities = capabilities })
 
     -- tailwindCSS
-    lspconfig.tailwindcss.setup({})
+    lspconfig.tailwindcss.setup({
+      settings = {
+        tailwindCSS = {
+          experimental = {
+            classRegex = {
+              { "cva\\(([^)]*)\\)", "[\"'`]([^\"'`]*).*?[\"'`]" },
+              { "cx\\(([^)]*)\\)", "(?:'|\"|`)([^']*)(?:'|\"|`)" },
+            },
+          },
+        },
+      },
+    })
   end,
 }
