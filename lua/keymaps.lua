@@ -23,7 +23,7 @@ vim.keymap.set("n", ",D", ":bufdo bd<CR>")
 
 -- split
 vim.keymap.set("n", ",v", ":vs<CR>")
-vim.keymap.set("n", ",g", ":sp<CR>")
+-- vim.keymap.set("n", ",g", ":sp<CR>")
 
 -- show invisible chars
 vim.keymap.set("n", ",sh", ":set list!<CR>")

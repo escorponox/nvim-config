@@ -47,6 +47,7 @@ end
 
 return {
   "kyazdani42/nvim-tree.lua",
+  enabled = false,
   keys = {
     { ",m", ":NvimTreeToggle<CR>", desc = "NvimTreeToggle" },
     { ",,", ":NvimTreeFindFileToggle<CR>", desc = "NvimTreeFindFile" },
