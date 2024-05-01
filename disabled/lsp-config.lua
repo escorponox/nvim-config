@@ -2,6 +2,7 @@ local f = require("plugins.common.formatters")
 
 return {
   "neovim/nvim-lspconfig",
+  enabled = false,
   event = { "BufReadPre", "BufNewFile" },
   init = function()
     -- add border to hover
@@ -140,5 +141,7 @@ return {
         },
       },
     })
+
+    lspconfig.tsserver.setup({})
   end,
 }

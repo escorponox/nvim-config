@@ -1,7 +1,9 @@
 return {
   "nvim-neotest/neotest",
   dependencies = {
+    "nvim-neotest/nvim-nio",
     "nvim-neotest/neotest-go",
+    "nvim-neotest/neotest-jest",
     "nvim-lua/plenary.nvim",
     "nvim-treesitter/nvim-treesitter",
   },
@@ -24,6 +26,14 @@ return {
           test_table = true,
         },
         args = { "-count=1", "-timeout=60s", "-p=1" },
+      }),
+      require("neotest-jest")({
+        jestCommand = "npm test --",
+        jestConfigFile = "jest.config.ts",
+        env = { CI = true },
+        cwd = function(path)
+          return vim.fn.getcwd()
+        end,
       }),
     }
     require("neotest").setup(opts)

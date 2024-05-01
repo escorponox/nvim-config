@@ -1,15 +1,15 @@
-local neotree_command = require("neo-tree.command")
-local close_all_neotrees = function()
-  local tabpages = vim.api.nvim_list_tabpages()
-  local current_tabpage = vim.api.nvim_get_current_tabpage()
+-- local neotree_command = require("neo-tree.command")
+-- local close_all_neotrees = function()
+--   local tabpages = vim.api.nvim_list_tabpages()
+--   local current_tabpage = vim.api.nvim_get_current_tabpage()
 
-  for _, tabpage in ipairs(tabpages) do
-    vim.api.nvim_set_current_tabpage(tabpage)
-    neotree_command.execute({ action = "close" })
-  end
+--   for _, tabpage in ipairs(tabpages) do
+--     vim.api.nvim_set_current_tabpage(tabpage)
+--     neotree_command.execute({ action = "close" })
+--   end
 
-  vim.api.nvim_set_current_tabpage(current_tabpage)
-end
+--   vim.api.nvim_set_current_tabpage(current_tabpage)
+-- end
 
 return {
   "echasnovski/mini.sessions",
@@ -76,7 +76,7 @@ return {
       local cwd = vim.loop.cwd()
       -- replace / with _ to avoid errors
       local clean_cwd = string.gsub(cwd, "/", "_")
-      -- local tree_api = require("nvim-tree.api")
+      local tree_api = require("nvim-tree.api")
 
       -- get detected sessions
       local detected_sessions = MiniSessions.detected
@@ -91,8 +91,8 @@ return {
       end
 
       if detected then
-        -- tree_api.tree.close()
-        close_all_neotrees()
+        tree_api.tree.close()
+        -- close_all_neotrees()
         MiniSessions.write(clean_cwd)
       end
     end

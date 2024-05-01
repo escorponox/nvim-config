@@ -85,7 +85,7 @@ local kanagawa = {
   end,
 }
 
-return {
+local tokyonight = {
   "folke/tokyonight.nvim",
   lazy = false,
   priority = 1000,
@@ -98,3 +98,5 @@ return {
     vim.cmd.colorscheme("tokyonight")
   end,
 }
+
+return catppuccin

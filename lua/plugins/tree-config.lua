@@ -47,7 +47,7 @@ end
 
 return {
   "kyazdani42/nvim-tree.lua",
-  enabled = false,
+  enabled = true,
   keys = {
     { ",m", ":NvimTreeToggle<CR>", desc = "NvimTreeToggle" },
     { ",,", ":NvimTreeFindFileToggle<CR>", desc = "NvimTreeFindFile" },
@@ -57,6 +57,8 @@ return {
     local tree = require("nvim-tree")
 
     tree.setup({
+      disable_netrw = true,
+      auto_reload_on_write = true,
       git = {
         enable = false,
         ignore = false,

@@ -53,6 +53,7 @@ return {
       "go",
       "graphql",
       "hcl",
+      "helm",
       "html",
       "http",
       "javascript",

@@ -1,5 +1,6 @@
 return {
   "nvim-neo-tree/neo-tree.nvim",
+  enabled = false,
   branch = "v3.x",
   dependencies = {
     "nvim-lua/plenary.nvim",
@@ -22,6 +23,7 @@ return {
       function()
         require("neo-tree.command").execute({
           toggle = true,
+          reveal = true,
           dir = vim.uv.cwd(),
         })
       end,
@@ -43,7 +45,7 @@ return {
         require("neo-tree.command").execute({
           source = "git_status",
           toggle = true,
-          dir = vim.fn.expand("%:p:h"),
+          dir = vim.uv.cwd(),
         })
       end,
       desc = "NeoTree File Folder",
@@ -56,9 +58,13 @@ return {
     window = {
       width = 60,
     },
+    enable_git_status = false,
+    enable_diagnostics = false,
+    enable_modified_markers = false,
+    enable_opened_markers = false,
     filesystem = {
       bind_to_cwd = false,
-      follow_current_file = { enabled = true },
+      follow_current_file = { enabled = false },
       use_libuv_file_watcher = true,
       window = {
         mappings = {
