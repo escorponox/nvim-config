@@ -50,6 +50,9 @@ return {
     ensure_installed = {
       "bash",
       "css",
+      "dockerfile",
+      "git_config",
+      "gitignore",
       "go",
       "graphql",
       "hcl",
@@ -74,6 +77,7 @@ return {
       "tsx",
       "typescript",
       "vim",
+      "vimdoc",
       "vue",
       "yaml",
       "zig",

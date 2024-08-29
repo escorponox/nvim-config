@@ -10,9 +10,16 @@ return {
     local lsp_zero = require("lsp-zero")
     local lspconfig = require("lspconfig")
 
+    local function goto_next_diagnostic()
+      vim.diagnostic.jump({ count = 1, float = true })
+    end
+    local function goto_prev_diagnostic()
+      vim.diagnostic.jump({ count = -1, float = true })
+    end
+
     -- Global mappings
-    vim.keymap.set("n", "<C-k>", vim.diagnostic.goto_prev)
-    vim.keymap.set("n", "<C-j>", vim.diagnostic.goto_next)
+    vim.keymap.set("n", "<C-k>", goto_prev_diagnostic)
+    vim.keymap.set("n", "<C-j>", goto_next_diagnostic)
     vim.keymap.set("n", "<C-h>", function()
       vim.lsp.inlay_hint(0, nil)
     end, { desc = "Toggle Inlay Hints" })
@@ -64,5 +71,7 @@ return {
     })
 
     lspconfig.tsserver.setup({})
+
+    lspconfig.terraformls.setup({})
   end,
 }

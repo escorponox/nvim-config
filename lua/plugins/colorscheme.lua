@@ -19,7 +19,10 @@ local catppuccin = {
   "catppuccin/nvim",
   name = "catppuccin",
   opts = {
-    flavour = "latte",
+    background = { -- :h background
+      light = "latte",
+      dark = "frappe",
+    },
     integrations = {
       coc_nvim = true,
       nvimtree = true,
@@ -46,7 +49,6 @@ local catppuccin = {
     },
   },
   config = function(_, opts)
-    vim.o.background = "dark"
     require("catppuccin").setup(opts)
     vim.cmd.colorscheme("catppuccin")
   end,

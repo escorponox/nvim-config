@@ -1,29 +1,29 @@
-local f = require("plugins.common.formatters")
-
-local slow_format_filetypes = {}
-
-local function format_on_save(bufnr)
-  if slow_format_filetypes[vim.bo[bufnr].filetype] then
-    return
-  end
-  local function on_format(err)
-    if err and err:match("timeout$") then
-      slow_format_filetypes[vim.bo[bufnr].filetype] = true
-    end
-  end
-
-  return { timeout_ms = 150, lsp_fallback = true }, on_format
-end
-
 return {
   "stevearc/conform.nvim",
   enabled = true,
   opts = {
     format_on_save = {
       timeout_ms = 2500,
-      lsp_fallback = true,
-      async = true,
+      lsp_format = "fallback",
     },
-    formatters_by_ft = f.conform_formatters(),
+    formatters_by_ft = {
+      ["javascript"] = { "prettier" },
+      ["javascriptreact"] = { "prettier" },
+      ["typescript"] = { "prettier" },
+      ["typescriptreact"] = { "prettier" },
+      ["vue"] = { "prettier" },
+      ["css"] = { "prettier" },
+      ["scss"] = { "prettier" },
+      ["less"] = { "prettier" },
+      ["html"] = { "prettier" },
+      ["json"] = { "prettier" },
+      ["jsonc"] = { "prettier" },
+      ["yaml"] = { "prettier" },
+      ["markdown"] = { "prettier" },
+      ["markdown.mdx"] = { "prettier" },
+      ["graphql"] = { "prettier" },
+      ["handlebars"] = { "prettier" },
+      ["lua"] = { "stylua" },
+    },
   },
 }
