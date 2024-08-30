@@ -30,15 +30,21 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 --   end,
 -- })
 
--- local ColorSchemeGrp = vim.api.nvim_create_augroup("ColorSchemeGrp", { clear = true })
--- vim.api.nvim_create_autocmd("OptionSet", {
---   group = ColorSchemeGrp,
---   pattern = "background",
---   callback = function()
---     if vim.o.background == "light" then
---       vim.cmd.colorscheme("tokyonight-day")
---     else
---       vim.cmd.colorscheme("kanagawa")
---     end
---   end,
--- })
+local ColorSchemeGrp = vim.api.nvim_create_augroup("ColorSchemeGrp", { clear = true })
+vim.api.nvim_create_autocmd("OptionSet", {
+  group = ColorSchemeGrp,
+  pattern = "background",
+  callback = function()
+    if vim.o.background == "light" then
+      vim.api.nvim_set_hl(0, "NeotestPassed", { fg = "#4F6F3E" })
+      vim.api.nvim_set_hl(0, "NeotestFailed", { fg = "#D7005F" })
+      vim.api.nvim_set_hl(0, "NeotestRunning", { fg = "#4C669F" })
+      vim.api.nvim_set_hl(0, "NeotestSkipped", { fg = "#3A8D94" })
+    else
+      vim.api.nvim_set_hl(0, "NeotestPassed", { fg = "#A3BE8C" })
+      vim.api.nvim_set_hl(0, "NeotestFailed", { fg = "#FF6C6B" })
+      vim.api.nvim_set_hl(0, "NeotestRunning", { fg = "#81A1C1" })
+      vim.api.nvim_set_hl(0, "NeotestSkipped", { fg = "#88C0D0" })
+    end
+  end,
+})

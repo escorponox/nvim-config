@@ -40,6 +40,11 @@ return {
     local capabilities = require("cmp_nvim_lsp").default_capabilities()
     capabilities.textDocument.completion.completionItem.snippetSupport = false
 
+    -- remove these default keybindings since they are making gr slow
+    vim.keymap.del({ "n", "x" }, "gra")
+    vim.keymap.del("n", "grr")
+    vim.keymap.del("n", "grn")
+
     -- lua
     lspconfig.lua_ls.setup({
       capabilities = capabilities,
