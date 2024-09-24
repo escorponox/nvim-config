@@ -75,7 +75,13 @@ return {
       },
     })
 
-    lspconfig.tsserver.setup({})
+    lspconfig.ts_ls.setup({
+      init_options = {
+        preferences = {
+          importModuleSpecifierPreference = "shortest",
+        },
+      },
+    })
 
     lspconfig.terraformls.setup({})
   end,

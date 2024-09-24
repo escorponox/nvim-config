@@ -59,6 +59,10 @@ return {
     tree.setup({
       disable_netrw = true,
       auto_reload_on_write = true,
+      notify = {
+        threshold = vim.log.levels.WARN,
+        absolute_path = false,
+      },
       git = {
         enable = false,
         ignore = false,

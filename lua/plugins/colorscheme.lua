@@ -25,6 +25,7 @@ local catppuccin = {
     },
     integrations = {
       coc_nvim = true,
+      grug_far = true,
       nvimtree = true,
       notify = true,
       native_lsp = {
