@@ -84,5 +84,7 @@ return {
     })
 
     lspconfig.terraformls.setup({})
+
+    lspconfig.biome.setup({})
   end,
 }

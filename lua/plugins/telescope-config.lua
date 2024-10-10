@@ -115,6 +115,8 @@ return {
     vim.keymap.set("n", ",fs", builtin.git_status, { desc = "Find git status" })
     vim.keymap.set("n", ",fq", builtin.quickfix, { desc = "Find quickfix" })
 
+    vim.keymap.set("n", ",fR", builtin.resume, { desc = "Telescope Resume" })
+
     vim.keymap.set("n", ",fr", lsp_references, { desc = "Find references" })
     vim.keymap.set("n", "gd", lsp_definitions, { desc = "Find definitions" })
     vim.keymap.set("n", "gi", lsp_implementations, { desc = "Find implementations" })

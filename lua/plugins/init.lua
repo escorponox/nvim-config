@@ -9,4 +9,5 @@ return {
       require("supermaven-nvim").setup({})
     end,
   },
+  "eandrju/cellular-automaton.nvim",
 }
