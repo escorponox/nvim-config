@@ -1,25 +1,46 @@
-local f = require("plugins.common.formatters")
-
 return {
   "neovim/nvim-lspconfig",
-  enabled = false,
+  enabled = true,
   event = { "BufReadPre", "BufNewFile" },
   init = function()
-    -- add border to hover
-    vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = "rounded" })
+    local lspconfig = require("lspconfig")
+
+    local function goto_next_diagnostic()
+      vim.diagnostic.jump({ count = 1, float = true })
+    end
+    local function goto_prev_diagnostic()
+      vim.diagnostic.jump({ count = -1, float = true })
+    end
+
     vim.diagnostic.config({
-      float = { border = "rounded" },
+      virtual_text = true,
+      virtual_lines = { current_line = true },
     })
 
     -- Global mappings
-    vim.keymap.set("n", "<C-k>", vim.diagnostic.goto_prev)
-    vim.keymap.set("n", "<C-j>", vim.diagnostic.goto_next)
+
+    -- remove these default keybindings since they are making gr slow
+    vim.keymap.del({ "n", "x" }, "gra")
+    vim.keymap.del("n", "grr")
+    vim.keymap.del("n", "grn")
+    vim.keymap.del("n", "gri")
+
+    vim.keymap.set("n", "<C-k>", goto_prev_diagnostic)
+    vim.keymap.set("n", "<C-j>", goto_next_diagnostic)
+
     vim.keymap.set("n", "<C-h>", function()
       vim.lsp.inlay_hint(0, nil)
     end, { desc = "Toggle Inlay Hints" })
-    local lspconfig = require("lspconfig")
 
-    local formatGroup = vim.api.nvim_create_augroup("LspFormatting", {})
+    -- Add cmp_nvim_lsp capabilities settings to lspconfig
+    -- This should be executed before you configure any language server
+    local lspconfig_defaults = require("lspconfig").util.default_config
+
+    local capabilities = require("cmp_nvim_lsp").default_capabilities()
+    capabilities.textDocument.completion.completionItem.snippetSupport = false
+
+    lspconfig_defaults.capabilities = vim.tbl_deep_extend("force", lspconfig_defaults.capabilities, capabilities)
+
     vim.api.nvim_create_autocmd("LspAttach", {
       callback = function(ev)
         vim.bo[ev.buf].omnifunc = "v:lua.vim.lsp.omnifunc"
@@ -47,23 +68,50 @@ return {
             end
           end
         end
-
-        local should_format = f.should_format_with_lsp(vim.bo[ev.buf].filetype)
-        if client ~= nil and should_format and client.supports_method("textDocument/formatting") then
-          vim.api.nvim_clear_autocmds({ group = formatGroup, buffer = ev.buf })
-          vim.api.nvim_create_autocmd("BufWritePre", {
-            group = formatGroup,
-            buffer = ev.buf,
-            callback = function(args)
-              vim.lsp.buf.format({ bufnr = args.buf, async = false })
-            end,
-          })
-        end
       end,
     })
 
-    local capabilities = require("cmp_nvim_lsp").default_capabilities()
-    capabilities.textDocument.completion.completionItem.snippetSupport = false
+    -- lua
+    lspconfig.lua_ls.setup({
+      capabilities = capabilities,
+      settings = {
+        Lua = {
+          runtime = { version = "LuaJIT" },
+          diagnostics = { globals = { "vim", "sbar" } },
+          workspace = {
+            library = vim.api.nvim_get_runtime_file("", true),
+            checkThirdParty = false,
+          },
+          telemetry = { enable = false },
+        },
+      },
+    })
+
+    -- tailwindCSS
+    lspconfig.tailwindcss.setup({
+      settings = {
+        tailwindCSS = {
+          experimental = {
+            classRegex = {
+              { "cva\\(([^)]*)\\)", "[\"'`]([^\"'`]*).*?[\"'`]" },
+              { "cx\\(([^)]*)\\)", "(?:'|\"|`)([^']*)(?:'|\"|`)" },
+            },
+          },
+        },
+      },
+    })
+
+    lspconfig.ts_ls.setup({
+      init_options = {
+        preferences = {
+          importModuleSpecifierPreference = "shortest",
+        },
+      },
+    })
+
+    lspconfig.terraformls.setup({})
+
+    lspconfig.biome.setup({})
 
     -- Golang
     lspconfig.gopls.setup({
@@ -109,39 +157,10 @@ return {
       init_options = { usePlaceholders = true },
     })
 
-    -- lua
-    lspconfig.lua_ls.setup({
-      capabilities = capabilities,
-      settings = {
-        Lua = {
-          runtime = { version = "LuaJIT" },
-          diagnostics = { globals = { "vim" } },
-          workspace = {
-            library = vim.api.nvim_get_runtime_file("", true),
-            checkThirdParty = false,
-          },
-          telemetry = { enable = false },
-        },
-      },
+    lspconfig.rust_analyzer.setup({
+      on_attach = function(_, bufnr)
+        vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
+      end,
     })
-
-    -- terraform
-    lspconfig.terraformls.setup({ capabilities = capabilities })
-
-    -- tailwindCSS
-    lspconfig.tailwindcss.setup({
-      settings = {
-        tailwindCSS = {
-          experimental = {
-            classRegex = {
-              { "cva\\(([^)]*)\\)", "[\"'`]([^\"'`]*).*?[\"'`]" },
-              { "cx\\(([^)]*)\\)", "(?:'|\"|`)([^']*)(?:'|\"|`)" },
-            },
-          },
-        },
-      },
-    })
-
-    lspconfig.tsserver.setup({})
   end,
 }
