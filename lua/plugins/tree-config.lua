@@ -1,50 +1,3 @@
-local template_fn = function(command)
-  return function()
-    local luv = vim.uv
-    local api = require("nvim-tree.api")
-    local process = {
-      cmd = command,
-      args = {},
-      errors = "\n",
-      stderr = luv.new_pipe(false),
-    }
-
-    local node = api.tree.get_node_under_cursor()
-    local s = vim.fn.input("New " .. command .. ": ", "")
-    local path = vim.fn.fnamemodify(node.absolute_path, ":p:h")
-    process.handle, process.pid = luv.spawn(process.cmd, {
-      args = { s },
-      stdio = { nil, nil, process.stderr },
-      detached = true,
-      cwd = path,
-    }, function(code)
-      process.stderr:read_stop()
-      process.stderr:close()
-      process.handle:close()
-      if code ~= 0 then
-        process.errors = process.errors .. string.format("NvimTree system_open: return code %d.", code)
-        error(process.errors)
-      else
-        vim.schedule_wrap(api.tree.reload)()
-      end
-    end)
-    table.remove(process.args)
-    if not process.handle then
-      error("\n" .. process.pid .. "\nNvimTree system_open: failed to spawn process using '" .. process.cmd .. "'.")
-      return
-    end
-    luv.read_start(process.stderr, function(err, data)
-      if err then
-        return
-      end
-      if data then
-        process.errors = process.errors .. data
-      end
-    end)
-    luv.unref(process.handle)
-  end
-end
-
 return {
   "kyazdani42/nvim-tree.lua",
   enabled = true,
@@ -124,8 +77,6 @@ return {
 
         vim.keymap.set("n", "s", api.node.open.vertical, { buffer = bufnr })
         vim.keymap.set("n", "t", api.node.open.tab, { buffer = bufnr })
-        -- vim.keymap.set("n", "<leader>cc", inject_node(template_fn("component")), { buffer = bufnr })
-        -- vim.keymap.set("n", "<leader>ch", inject_node(template_fn("hook")), { buffer = bufnr })
         vim.keymap.set("n", "<C-]>", api.tree.change_root_to_node, opts("CD"))
         vim.keymap.set("n", "<C-e>", api.node.open.replace_tree_buffer, opts("Open: In Place"))
         vim.keymap.set("n", "<C-k>", api.node.show_info_popup, opts("Info"))

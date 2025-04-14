@@ -11,9 +11,10 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
-require('keymaps')
-require('options')
-require('autocommands')
-require('commands')
+require("keymaps")
+require("options")
+require("autocommands")
+require("commands")
+require("macros")
 
-require('lazy').setup('plugins')
+require("lazy").setup("plugins")

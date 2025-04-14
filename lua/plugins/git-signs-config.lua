@@ -5,6 +5,21 @@ return {
   "lewis6991/gitsigns.nvim",
   event = { "BufReadPre", "BufNewFile" },
   opts = {
+    signs = {
+      add = { text = "▎" },
+      change = { text = "▎" },
+      delete = { text = "" },
+      topdelete = { text = "" },
+      changedelete = { text = "▎" },
+      untracked = { text = "▎" },
+    },
+    signs_staged = {
+      add = { text = "▎" },
+      change = { text = "▎" },
+      delete = { text = "" },
+      topdelete = { text = "" },
+      changedelete = { text = "▎" },
+    },
     on_attach = function(bufnr)
       local gs = require("gitsigns")
 
@@ -55,7 +70,8 @@ return {
       end)
 
       -- Actions
-      map({ "n", "v" }, "<leader>hi", gs.preview_hunk)
+      map({ "n", "v" }, "<leader>hh", gs.preview_hunk)
+      map({ "n", "v" }, "<leader>hi", gs.preview_hunk_inline)
       map({ "n", "v" }, "<leader>hu", gs.reset_hunk)
       -- map("n", 'gb', gs.blame_line)
     end,
