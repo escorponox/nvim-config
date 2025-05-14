@@ -26,4 +26,4 @@ vim.o.termguicolors = true
 vim.o.sessionoptions = "blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions"
 vim.opt.conceallevel = 0
 
-vim.o.winborder = "none"
+vim.o.winborder = "single"

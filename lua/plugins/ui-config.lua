@@ -1,19 +1,5 @@
 return {
   {
-    "stevearc/dressing.nvim",
-    opts = {
-      select = {
-        backend = "builtin",
-        builtin = {
-          relative = "cursor",
-        },
-      },
-    },
-    config = function(_, opts)
-      require("dressing").setup(opts)
-    end,
-  },
-  {
     "rcarriga/nvim-notify",
     keys = {
       {
@@ -83,20 +69,20 @@ return {
         end,
       })
     end,
-    {
-      "echasnovski/mini.hipatterns",
-      version = false,
-      config = function()
-        local hipatterns = require("mini.hipatterns")
+  },
+  {
+    "echasnovski/mini.hipatterns",
+    version = false,
+    config = function()
+      local hipatterns = require("mini.hipatterns")
 
-        hipatterns.setup({
-          highlighters = {
+      hipatterns.setup({
+        highlighters = {
 
-            -- Highlight hex color strings (`#rrggbb`) using that color
-            hex_color = hipatterns.gen_highlighter.hex_color(),
-          },
-        })
-      end,
-    },
+          -- Highlight hex color strings (`#rrggbb`) using that color
+          hex_color = hipatterns.gen_highlighter.hex_color(),
+        },
+      })
+    end,
   },
 }

@@ -2,7 +2,7 @@ return {
   "tpope/vim-surround",
   "tpope/vim-repeat",
   "tpope/vim-commentary",
-  "github/copilot.vim",
+  -- "github/copilot.vim", --added in copilotChat
   -- {
   --   "supermaven-inc/supermaven-nvim",
   --   config = function()

@@ -98,4 +98,31 @@ local tokyonight = {
   end,
 }
 
-return kanagawa
+local neomodern = {
+  "cdmill/neomodern.nvim",
+  lazy = false,
+  priority = 1000,
+  config = function()
+    require("neomodern").setup({
+      -- optional configuration here
+      theme = "iceclimber",
+    })
+    require("neomodern").load()
+  end,
+}
+
+local melange = {
+  "savq/melange-nvim",
+  config = function()
+    vim.cmd.colorscheme("melange")
+  end,
+}
+
+local greenvim = {
+  "escorponox/greenvim",
+  config = function()
+    vim.cmd.colorscheme("melange")
+  end,
+}
+
+return greenvim

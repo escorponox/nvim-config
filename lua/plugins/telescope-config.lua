@@ -2,14 +2,15 @@ return {
   "nvim-telescope/telescope.nvim",
   branch = "0.1.x",
   version = false,
+  enabled = false,
   dependencies = {
     { "nvim-lua/plenary.nvim" },
     {
       "nvim-telescope/telescope-fzf-native.nvim",
       build = "make",
-      config = function()
-        require("telescope").load_extension("fzf")
-      end,
+    },
+    {
+      "nvim-telescope/telescope-ui-select.nvim",
     },
     -- {
     --   'nvim-telescope/telescope-fzf-native.nvim',
@@ -83,8 +84,17 @@ return {
           override_file_sorter = true, -- override the file sorter
           case_mode = "smart_case", -- or "ignore_case" or "respect_case"
         },
+        ["ui-select"] = {
+          layout_strategy = "cursor",
+          layout_config = {
+            width = 0.25,
+            height = 20,
+          },
+        },
       },
     })
+    require("telescope").load_extension("fzf")
+    require("telescope").load_extension("ui-select")
 
     local function grep_string()
       builtin.grep_string({ search = vim.fn.input("Grep For > ") })
