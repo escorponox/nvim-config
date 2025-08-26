@@ -15,45 +15,6 @@ local gruvbox = {
     vim.api.nvim_set_hl(0, "NvimTreeIndentMarker", { link = "GruvBoxOrange" })
   end,
 }
-local catppuccin = {
-  "catppuccin/nvim",
-  name = "catppuccin",
-  opts = {
-    background = { -- :h background
-      light = "latte",
-      dark = "frappe",
-    },
-    integrations = {
-      coc_nvim = true,
-      grug_far = true,
-      nvimtree = true,
-      notify = true,
-      native_lsp = {
-        enabled = true,
-        virtual_text = {
-          errors = { "italic" },
-          hints = { "italic" },
-          warnings = { "italic" },
-          information = { "italic" },
-        },
-        underlines = {
-          errors = { "underline" },
-          hints = { "underline" },
-          warnings = { "underline" },
-          information = { "underline" },
-        },
-      },
-      dap = {
-        enabled = true,
-        enable_ui = true,
-      },
-    },
-  },
-  config = function(_, opts)
-    require("catppuccin").setup(opts)
-    vim.cmd.colorscheme("catppuccin")
-  end,
-}
 
 local kanagawa = {
   "rebelot/kanagawa.nvim",
@@ -84,33 +45,6 @@ local kanagawa = {
   end,
 }
 
-local tokyonight = {
-  "folke/tokyonight.nvim",
-  lazy = false,
-  priority = 1000,
-  opts = {
-    style = "storm",
-    light_style = "day",
-  },
-  config = function(_, opts)
-    require("tokyonight").setup(opts)
-    vim.cmd.colorscheme("tokyonight")
-  end,
-}
-
-local neomodern = {
-  "cdmill/neomodern.nvim",
-  lazy = false,
-  priority = 1000,
-  config = function()
-    require("neomodern").setup({
-      -- optional configuration here
-      theme = "iceclimber",
-    })
-    require("neomodern").load()
-  end,
-}
-
 local melange = {
   "savq/melange-nvim",
   config = function()
@@ -125,4 +59,4 @@ local greenvim = {
   end,
 }
 
-return greenvim
+return melange

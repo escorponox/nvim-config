@@ -1,4 +1,4 @@
-return {
+local old_config = {
   "nvim-treesitter/nvim-treesitter",
   event = { "BufReadPost", "BufNewFile" },
   version = false,
@@ -65,6 +65,7 @@ return {
       "json5",
       "lua",
       "markdown",
+      "markdown_inline",
       "perl",
       "prisma",
       "regex",
@@ -87,9 +88,6 @@ return {
       enable = true, -- false will disable the whole extension
       additional_vim_regex_highlighting = false,
     },
-    autotag = {
-      enable = false, -- sometimes it messes up the whole file
-    },
     indent = {
       enable = true,
     },
@@ -103,3 +101,21 @@ return {
     },
   },
 }
+
+local new_config = {
+  "nvim-treesitter/nvim-treesitter",
+  lazy = false,
+  branch = "main",
+  build = ":TSUpdate",
+  config = function()
+    local treesitter = require("nvim-treesitter")
+    treesitter.setup({
+      -- Directory to install parsers and queries to
+      install_dir = vim.fn.stdpath("data") .. "/site",
+    })
+
+    treesitter.install({ "stable", "unstable" })
+  end,
+}
+
+return new_config

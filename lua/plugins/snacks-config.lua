@@ -36,6 +36,15 @@ return {
     },
     picker = {
       ui_select = true,
+      formatters = {
+        file = {
+          filename_first = true, -- display filename before the file path
+          truncate = 80, -- truncate the file path to (roughly) this length
+          filename_only = false, -- only show the filename
+          icon_width = 2, -- width of the icon (in characters)
+          git_status_hl = true, -- use the git status highlight group for the filename
+        },
+      },
       layouts = {
         select = {
           layout = {
@@ -79,9 +88,12 @@ return {
     -- resume
     { ",fR", function() Snacks.picker.resume() end, desc = "Resume" },
 
+    -- pickers
+    { ",fp", function() Snacks.picker.pickers() end, desc = "Pickers" },
+
     -- files
-    { ",ff", function() Snacks.picker.files() end, desc = "Find Files", },
-    { ",fm", function() Snacks.picker.recent({ filter = { cwd = true}}) end, desc = "Recent", },
+    { ",ff", function() Snacks.picker.files({ hidden = true }) end, desc = "Find Files", },
+    { ",fm", function() Snacks.picker.recent({ filter = { cwd = true }}) end, desc = "Recent", },
     { ",fe", function() Snacks.picker.buffers() end, desc = "Buffers" },
 
     -- grep
@@ -95,8 +107,8 @@ return {
     { ",fq", function() Snacks.picker.qflist() end, desc = "Quickfix" },
 
     -- lsp
-    { ",fr", function() Snacks.picker.lsp_references({ focus = "list" }) end, desc = "LSP References" },
-    { "gd", function() Snacks.picker.lsp_definitions({ focus = "list" }) end, desc = "LSP Definitions" },
-    { "gi", function() Snacks.picker.lsp_implementations({ focus = "list" }) end, desc = "LSP Implementations" },
+    { ",fr", function() Snacks.picker.lsp_references({ focus = "list", auto_confirm = false }) end, desc = "LSP References" },
+    { "gd", function() Snacks.picker.lsp_definitions({ focus = "list", auto_confirm = false }) end, desc = "LSP Definitions" },
+    { "gi", function() Snacks.picker.lsp_implementations({ focus = "list", auto_confirm = false }) end, desc = "LSP Implementations" },
   },
 }

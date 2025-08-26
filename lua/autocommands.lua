@@ -48,3 +48,22 @@ vim.api.nvim_create_autocmd("OptionSet", {
     end
   end,
 })
+
+vim.filetype.add({
+  extension = {
+    gotmpl = "gotmpl",
+  },
+  pattern = {
+    [".*-deployments/.*/.*%.yaml"] = "helm", -- new pattern
+    [".*/templates/.*%.tpl"] = "helm",
+    [".*/templates/.*%.ya?ml"] = "helm",
+    ["helmfile.*%.ya?ml"] = "helm",
+  },
+})
+
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = { "typescript", "typescriptreact", "javascript", "javascriptreact", "helm" },
+  callback = function()
+    vim.treesitter.start()
+  end,
+})

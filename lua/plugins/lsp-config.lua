@@ -173,5 +173,7 @@ return {
         vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
       end,
     })
+
+    vim.lsp.enable("helm_ls")
   end,
 }

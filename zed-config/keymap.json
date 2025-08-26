@@ -1,0 +1,184 @@
+[
+  {
+    "context": "VimControl && !menu",
+    "bindings": {
+      "j j": ["vim::SwitchMode", "Normal"]
+    }
+  },
+  {
+    "context": "vim_mode == normal",
+    "bindings": {
+      "j": "vim::Down",
+      "k": "vim::Up",
+
+      "0": "vim::StartOfLine",
+      "^": "vim::FirstNonWhitespace",
+
+      "shift-q": "vim::NoOp",
+      "q :": "vim::NoOp",
+
+      "shift-j": ["vim::MoveToEndOfLine", "vim::JoinLines"],
+
+      ", r r": ["search::Deploy", { "replace_enabled": true }],
+      ", r g": [
+        "search::Deploy",
+        { "replace_enabled": true, "replace_all": true }
+      ],
+      ", r w": [
+        "editor::SelectWordAtCursor",
+        "search::Deploy",
+        { "replace_enabled": true }
+      ],
+
+      ", d": "pane::CloseActiveItem",
+      ", shift-d": "pane::CloseAllItems",
+
+      ", v": "pane::SplitRight",
+
+      ", s h": "editor::ToggleInvisibles",
+
+      ", y": "search::Dismiss",
+
+      ", s a": "editor::SelectAll",
+
+      ", q": "workspace::CloseAllItemsAndPanes",
+      ", w": "workspace::SaveAll",
+
+      ", b": "pane::ActivatePrevItem",
+      ", p": "pane::ActivatePrevItem",
+      ", n": "pane::ActivateNextItem",
+
+      ", z": "workspace::ToggleZoom",
+      ", h": ["workspace::ActivatePaneInDirection", "Left"],
+      ", l": ["workspace::ActivatePaneInDirection", "Right"],
+      ", j": ["workspace::ActivatePaneInDirection", "Down"],
+      ", k": ["workspace::ActivatePaneInDirection", "Up"],
+      ", =": "workspace::EqualizePanes",
+      ", x": "pane::SwapActivePaneInDirection",
+      ", c": "pane::CloseActiveItem",
+
+      ", +": ["workspace::ResizePane", { "axis": "horizontal", "amount": 0.1 }],
+      ", -": [
+        "workspace::ResizePane",
+        { "axis": "horizontal", "amount": -0.1 }
+      ],
+
+      ", t g": "workspace::NewFile",
+      ", t t": "pane::ActivateNextItem",
+      ", t r": "pane::CloseActiveItem",
+      ", t p": "pane::ActivatePrevItem",
+
+      ", f f": "file_finder::Toggle",
+      ", f g": "project_search::ToggleFocus",
+      ", f t": ["project_search::ToggleFocus", "editor::SelectWordAtCursor"],
+      ", f m": "recent_projects::Toggle",
+      ", f e": "tab_switcher::Toggle",
+      ", f s": "branches::OpenRecent",
+      ", f q": "diagnostics::Deploy",
+      ", f shift-r": "project_search::ToggleFocus",
+
+      ", f r": "editor::FindAllReferences",
+      "g d": "editor::GoToDefinition",
+      "g i": "editor::GoToImplementation",
+      "g r": "editor::Rename",
+      "g a": "editor::ToggleCodeActions",
+      "shift-k": "editor::Hover",
+
+      "space h j": "editor::GoToHunk",
+      "space h k": "editor::GoToPrevHunk",
+      "space h h": "editor::ToggleHunkDiff",
+      "space h u": "editor::RevertSelectedHunks",
+
+      "g b": "editor::ToggleGitBlame",
+
+      "space s r": "search::Deploy",
+
+      "space x x": "diagnostics::Deploy",
+
+      ", m": "project_panel::ToggleFocus",
+      ", ,": [
+        "project_panel::ToggleFocus",
+        "project_panel::RevealInProjectPanel"
+      ],
+
+      "space t t": "task::Spawn",
+      "space t shift-t": "task::Rerun",
+      "space t r": "task::Spawn",
+      "space t l": "task::Rerun",
+      "space t s": "outline::Toggle",
+      "space t shift-o": "terminal_panel::ToggleFocus",
+      "space t shift-s": "task::Stop",
+
+      "space d b": "editor::ToggleBreakpoint",
+      "space d shift-b": "editor::ToggleBreakpoint",
+      "space d c": "debugger::Continue",
+      "space d shift-c": "debugger::Continue",
+      "space d i": "debugger::StepInto",
+      "space d shift-o": "debugger::StepOut",
+      "space d o": "debugger::StepOver",
+      "space d r": "terminal_panel::ToggleFocus",
+      "space d s": "debugger::Continue",
+      "space d shift-t": "debugger::Stop",
+      "space d u": "debugger::ToggleVariables",
+      "space d t": "task::Spawn",
+      "space d l": "task::Rerun",
+
+      "ctrl-h": "editor::ToggleInlayHints",
+      "ctrl-j": "editor::GoToDiagnostic",
+      "ctrl-k": "editor::GoToPrevDiagnostic"
+    }
+  },
+  {
+    "context": "vim_mode == visual",
+    "bindings": {
+      "shift-j": "editor::MoveLineDown",
+      "shift-k": "editor::MoveLineUp",
+
+      "space h h": "editor::ToggleHunkDiff",
+      "space h u": "editor::RevertSelectedHunks"
+    }
+  },
+  {
+    "context": "vim_mode == insert",
+    "bindings": {
+      "ctrl-d": "editor::NextInlineCompletion",
+      "ctrl-u": "editor::PreviousInlineCompletion"
+    }
+  },
+  {
+    "context": "ProjectPanel",
+    "bindings": {
+      "o": "project_panel::Open",
+      "enter": "project_panel::Open",
+      "escape": "project_panel::ToggleFocus",
+      "s": ["project_panel::Open", "pane::SplitRight"],
+      "t": ["project_panel::Open", "pane::SplitDown"],
+      "shift-r": "project_panel::Refresh",
+      "a": "project_panel::NewFile",
+      "d": "project_panel::Delete",
+      "r": "project_panel::Rename",
+      "y": "project_panel::Copy",
+      "x": "project_panel::Cut",
+      "p": "project_panel::Paste",
+      "q": "project_panel::ToggleFocus",
+      "shift-h": "project_panel::ToggleHiddenFiles"
+    }
+  },
+  {
+    "context": "Terminal",
+    "bindings": {
+      "cmd-t": "workspace::NewTerminal",
+      "ctrl-`": "terminal_panel::ToggleFocus"
+    }
+  },
+  {
+    "context": "Editor && (showing_code_actions || showing_completions)",
+    "bindings": {
+      "ctrl-n": "editor::ContextMenuNext",
+      "ctrl-p": "editor::ContextMenuPrev",
+      "ctrl-space": "editor::ShowCompletions",
+      "ctrl-e": "editor::Cancel",
+      "enter": "editor::ConfirmCompletion"
+    }
+  }
+]
