@@ -1,16 +1,3 @@
--- local neotree_command = require("neo-tree.command")
--- local close_all_neotrees = function()
---   local tabpages = vim.api.nvim_list_tabpages()
---   local current_tabpage = vim.api.nvim_get_current_tabpage()
-
---   for _, tabpage in ipairs(tabpages) do
---     vim.api.nvim_set_current_tabpage(tabpage)
---     neotree_command.execute({ action = "close" })
---   end
-
---   vim.api.nvim_set_current_tabpage(current_tabpage)
--- end
-
 return {
   "echasnovski/mini.sessions",
   version = false,

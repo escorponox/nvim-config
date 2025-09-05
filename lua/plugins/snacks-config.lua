@@ -110,5 +110,8 @@ return {
     { ",fr", function() Snacks.picker.lsp_references({ focus = "list", auto_confirm = false }) end, desc = "LSP References" },
     { "gd", function() Snacks.picker.lsp_definitions({ focus = "list", auto_confirm = false }) end, desc = "LSP Definitions" },
     { "gi", function() Snacks.picker.lsp_implementations({ focus = "list", auto_confirm = false }) end, desc = "LSP Implementations" },
+
+    -- keymaps
+    { ",fk", function() Snacks.picker.keymaps() end, desc = "Keymaps" }
   },
 }

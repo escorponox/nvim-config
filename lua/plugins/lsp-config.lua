@@ -1,14 +1,3 @@
---local hover = vim.lsp.buf.hover
------@diagnostic disable-next-line: duplicate-set-field
---vim.lsp.buf.hover = function()
---  return hover({
---    border = "single",
---    -- max_width = 100,
---    max_width = math.floor(vim.o.columns * 0.7),
---    max_height = math.floor(vim.o.lines * 0.7),
---  })
---end
-
 return {
   "neovim/nvim-lspconfig",
   enabled = true,
@@ -30,12 +19,6 @@ return {
 
     -- Global mappings
 
-    -- remove these default keybindings since they are making gr slow
-    vim.keymap.del({ "n", "x" }, "gra")
-    vim.keymap.del("n", "grr")
-    vim.keymap.del("n", "grn")
-    vim.keymap.del("n", "gri")
-
     vim.keymap.set("n", "<C-k>", goto_prev_diagnostic)
     vim.keymap.set("n", "<C-j>", goto_next_diagnostic)
 
@@ -52,35 +35,29 @@ return {
 
     lspconfig_defaults.capabilities = vim.tbl_deep_extend("force", lspconfig_defaults.capabilities, capabilities)
 
-    vim.api.nvim_create_autocmd("LspAttach", {
-      callback = function(ev)
-        vim.bo[ev.buf].omnifunc = "v:lua.vim.lsp.omnifunc"
+    -- vim.api.nvim_create_autocmd("LspAttach", {
+    --   callback = function(ev)
+    --     vim.bo[ev.buf].omnifunc = "v:lua.vim.lsp.omnifunc"
 
-        local bufopts = { noremap = true, silent = true, buffer = ev.buf }
-        vim.keymap.set("n", "gr", vim.lsp.buf.rename, bufopts)
-        vim.keymap.set("n", "ga", vim.lsp.buf.code_action, bufopts)
+    --     local client = vim.lsp.get_client_by_id(ev.data.client_id)
 
-        vim.keymap.set("n", "K", vim.lsp.buf.hover, bufopts)
-
-        local client = vim.lsp.get_client_by_id(ev.data.client_id)
-
-        if client ~= nil and client.name == "gopls" then
-          if not client.server_capabilities.semanticTokensProvider then
-            local semantic = client.config.capabilities.textDocument.semanticTokens
-            if semantic ~= nil then
-              client.server_capabilities.semanticTokensProvider = {
-                full = true,
-                legend = {
-                  tokenTypes = semantic.tokenTypes,
-                  tokenModifiers = semantic.tokenModifiers,
-                },
-                range = true,
-              }
-            end
-          end
-        end
-      end,
-    })
+    --     if client ~= nil and client.name == "gopls" then
+    --       if not client.server_capabilities.semanticTokensProvider then
+    --         local semantic = client.config.capabilities.textDocument.semanticTokens
+    --         if semantic ~= nil then
+    --           client.server_capabilities.semanticTokensProvider = {
+    --             full = true,
+    --             legend = {
+    --               tokenTypes = semantic.tokenTypes,
+    --               tokenModifiers = semantic.tokenModifiers,
+    --             },
+    --             range = true,
+    --           }
+    --         end
+    --       end
+    --     end
+    --   end,
+    -- })
 
     -- lua
     lspconfig.lua_ls.setup({
@@ -175,5 +152,7 @@ return {
     })
 
     vim.lsp.enable("helm_ls")
+
+    -- vim.lsp.enable("ruff")
   end,
 }

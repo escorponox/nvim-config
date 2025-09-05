@@ -19,17 +19,6 @@ vim.api.nvim_create_autocmd("TextYankPost", {
   end,
 })
 
--- vim.api.nvim_create_autocmd("ColorScheme", {
---   pattern = "kanagawa",
---   callback = function()
---     if vim.o.background == "light" then
---       vim.fn.system("kitty +kitten themes Kanagawa_light")
---     else
---       vim.fn.system("kitty +kitten themes Kanagawa")
---     end
---   end,
--- })
-
 local ColorSchemeGrp = vim.api.nvim_create_augroup("ColorSchemeGrp", { clear = true })
 vim.api.nvim_create_autocmd("OptionSet", {
   group = ColorSchemeGrp,
@@ -59,11 +48,4 @@ vim.filetype.add({
     [".*/templates/.*%.ya?ml"] = "helm",
     ["helmfile.*%.ya?ml"] = "helm",
   },
-})
-
-vim.api.nvim_create_autocmd("FileType", {
-  pattern = { "typescript", "typescriptreact", "javascript", "javascriptreact", "helm" },
-  callback = function()
-    vim.treesitter.start()
-  end,
 })

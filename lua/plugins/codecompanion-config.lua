@@ -1,5 +1,6 @@
 return {
   "olimorris/codecompanion.nvim",
+  enabled = true,
   opts = {
     extensions = {
       mcphub = {
@@ -27,6 +28,9 @@ return {
       build = "npm install -g mcp-hub@latest", -- Installs `mcp-hub` node binary globally
       config = function()
         require("mcphub").setup({
+          global_env = {
+            REPOSITORY_PATH = vim.fn.getcwd(),
+          },
           extensions = {
             codecompanion = {
               enabled = true,
