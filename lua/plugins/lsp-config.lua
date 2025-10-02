@@ -60,7 +60,7 @@ return {
     -- })
 
     -- lua
-    lspconfig.lua_ls.setup({
+    vim.lsp.config("lua_ls", {
       capabilities = capabilities,
       settings = {
         Lua = {
@@ -74,9 +74,10 @@ return {
         },
       },
     })
+    vim.lsp.enable("lua_ls")
 
     -- tailwindCSS
-    lspconfig.tailwindcss.setup({
+    vim.lsp.config("tailwindcss", {
       settings = {
         tailwindCSS = {
           experimental = {
@@ -88,21 +89,21 @@ return {
         },
       },
     })
+    vim.lsp.enable("tailwindcss")
 
-    lspconfig.ts_ls.setup({
+    vim.lsp.config("ts_ls", {
       init_options = {
         preferences = {
           importModuleSpecifierPreference = "shortest",
         },
       },
     })
+    vim.lsp.enable("ts_ls")
 
-    lspconfig.terraformls.setup({})
-
-    lspconfig.biome.setup({})
+    vim.lsp.enable("biome")
 
     -- Golang
-    lspconfig.gopls.setup({
+    vim.lsp.config("gopls", {
       cmd = { "gopls" },
       capabilities = capabilities,
       settings = {
@@ -144,12 +145,13 @@ return {
       },
       init_options = { usePlaceholders = true },
     })
+    vim.lsp.enable("gopls")
 
-    lspconfig.rust_analyzer.setup({
-      on_attach = function(_, bufnr)
-        vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
-      end,
-    })
+    -- lspconfig.rust_analyzer.setup({
+    --   on_attach = function(_, bufnr)
+    --     vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
+    --   end,
+    -- })
 
     vim.lsp.enable("helm_ls")
 
