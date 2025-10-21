@@ -69,8 +69,8 @@ vim.keymap.set("n", ",tr", ":tabclose<CR>")
 vim.keymap.set("n", ",tp", ":tabprevious<CR>")
 
 -- quickfix
-vim.keymap.set("n", ",fj", ":cnext<CR>", { desc = "quickfix next" })
-vim.keymap.set("n", ",fk", ":cprev<CR>", { desc = "quickfix prev" })
+vim.keymap.set("n", "<leader>j", ":cnext<CR>", { desc = "quickfix next" })
+vim.keymap.set("n", "<leader>k", ":cprev<CR>", { desc = "quickfix prev" })
 
 -- greatest remap ever
 vim.keymap.set("n", "<leader>p", [[viw"_dP]], { desc = "replace word persistent paste" })

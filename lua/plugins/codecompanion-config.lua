@@ -2,6 +2,39 @@ return {
   "olimorris/codecompanion.nvim",
   enabled = true,
   opts = {
+    strategies = {
+      chat = {
+        adapter = "openrouter",
+      },
+      inline = {
+        adapter = "copilot",
+      },
+      cmd = {
+        adapter = "copilot",
+      },
+    },
+    adapters = {
+      http = {
+        openrouter = function()
+          return require("codecompanion.adapters").extend("openai_compatible", {
+            env = {
+              url = "https://openrouter.ai/api",
+              api_key = "OPENROUTER_API_KEY",
+              chat_url = "/v1/chat/completions",
+            },
+            schema = {
+              model = {
+                default = "anthropic/claude-sonnet-4.5",
+              },
+              reasoning = {
+                enabled = true,
+                max_tokens = 16384,
+              },
+            },
+          })
+        end,
+      },
+    },
     extensions = {
       mcphub = {
         callback = "mcphub.extensions.codecompanion",
@@ -10,6 +43,7 @@ return {
           show_server_tools_in_chat = true,
           add_mcp_prefix_to_tool_names = false,
           show_result_in_chat = true,
+          show_model_choices = true,
           format_tool = nil,
           make_vars = true,
           make_slash_commands = true,

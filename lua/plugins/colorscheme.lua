@@ -59,4 +59,4 @@ local greenvim = {
   end,
 }
 
-return melange
+return greenvim
