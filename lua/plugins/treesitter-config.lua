@@ -42,6 +42,8 @@ local new_config = {
       "vimdoc",
       "yaml",
     })
+
+    vim.treesitter.language.register("bash", { "zsh", "sh" })
   end,
 }
 

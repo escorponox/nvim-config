@@ -102,6 +102,46 @@ return {
 
     vim.lsp.enable("biome")
 
+    vim.lsp.config("eslint", {
+      settings = {
+        codeAction = {
+          disableRuleComment = {
+            enable = true,
+            location = "separateLine",
+          },
+          showDocumentation = {
+            enable = true,
+          },
+        },
+        codeActionOnSave = {
+          enable = false,
+          mode = "all",
+        },
+        experimental = {
+          useFlatConfig = false,
+        },
+        format = false,
+        nodePath = "",
+        onIgnoredFiles = "off",
+        problems = {
+          shortenToSingleLine = false,
+        },
+        quiet = false,
+        rulesCustomizations = {},
+        run = "onSave",
+        useESLintClass = false,
+        validate = "on",
+        workingDirectory = {
+          mode = "auto",
+        },
+      },
+    })
+
+    vim.lsp.enable("eslint")
+
+    -- python
+    vim.lsp.enable("ruff")
+
     -- Golang
     vim.lsp.config("gopls", {
       cmd = { "gopls" },
@@ -153,7 +193,7 @@ return {
     --   end,
     -- })
 
-    vim.lsp.enable("helm_ls")
+    -- vim.lsp.enable("helm_ls")
 
     -- vim.lsp.enable("ruff")
   end,
