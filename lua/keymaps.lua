@@ -85,9 +85,3 @@ vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv", { desc = "move line up" })
 
 -- keep cursor in place when joining lines
 vim.keymap.set("n", "J", "mzJ`z", { desc = "join lines keeping cursor in place" })
-
--- these keymaps are for plugins not configured in lazy
-
--- copilot
-vim.keymap.set("i", "<C-d>", "<Plug>(copilot-next)", { silent = true, desc = "copilot next" })
-vim.keymap.set("i", "<C-u>", "<Plug>(copilot-previous)", { silent = true, desc = "copilot previous" })
