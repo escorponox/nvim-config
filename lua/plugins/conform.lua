@@ -1,7 +1,7 @@
 local function use_biome_if_installed_locally(bufnr)
   local biome_info = require("conform").get_formatter_info("biome", bufnr)
   if biome_info and biome_info.available and biome_info.command:match("node_modules/.bin/biome") then
-    return { "biome" }
+    return { "biome", "biome-organize-imports" }
   end
 
   return { "prettier" }

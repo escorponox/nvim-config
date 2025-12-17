@@ -38,6 +38,11 @@ end
 --- @field mode "dude or tutor"
 function M.explain(mode)
   local current_project = api_get("/project/current")
+  if current_project == "" then
+    require("notify")("OpenCode: No current project found.")
+    return
+  end
+
   local current_working_directory = vim.fn.getcwd()
 
   local current_project_data = vim.fn.json_decode(current_project)
@@ -57,7 +62,7 @@ function M.explain(mode)
     end
     local text = file .. " line: " .. cursor_position[2] .. " col: " .. cursor_position[3]
     if user_input ~= "" then
-      text = text .. " " .. user_input
+      text = text .. " User input: " .. user_input
     end
     -- print("Executing command with text:", text)
     if mode == "dude" then

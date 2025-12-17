@@ -22,9 +22,9 @@ return {
     vim.keymap.set("n", "<C-k>", goto_prev_diagnostic)
     vim.keymap.set("n", "<C-j>", goto_next_diagnostic)
 
-    vim.keymap.set("n", "<C-h>", function()
-      vim.lsp.inlay_hint(0, nil)
-    end, { desc = "Toggle Inlay Hints" })
+    -- vim.keymap.set("n", "<C-h>", function()
+    --   vim.lsp.inlay_hint(0, nil)
+    -- end, { desc = "Toggle Inlay Hints" })
 
     -- Add cmp_nvim_lsp capabilities settings to lspconfig
     -- This should be executed before you configure any language server
@@ -149,36 +149,36 @@ return {
       settings = {
         gopls = {
           gofumpt = true,
-            codelenses = {
-              gc_details = false,
-              generate = true,
-              regenerate_cgo = true,
-              run_govulncheck = true,
-              test = true,
-              tidy = true,
-              upgrade_dependency = true,
-              vendor = true,
-            },
-            hints = {
-              assignVariableTypes = true,
-              compositeLiteralFields = true,
-              compositeLiteralTypes = true,
-              constantValues = true,
-              functionTypeParameters = true,
-              parameterNames = true,
-              rangeVariableTypes = true,
-            },
-            analyses = {
-              nilness = true,
-              unusedparams = true,
-              unusedwrite = true,
-              useany = true,
-            },
-            usePlaceholders = true,
-            completeUnimported = true,
-            staticcheck = true,
-            directoryFilters = { "-.git", "-.vscode", "-.idea", "-.vscode-test", "-node_modules" },
-            semanticTokens = true,
+          codelenses = {
+            gc_details = false,
+            generate = true,
+            regenerate_cgo = true,
+            run_govulncheck = true,
+            test = true,
+            tidy = true,
+            upgrade_dependency = true,
+            vendor = true,
+          },
+          hints = {
+            assignVariableTypes = true,
+            compositeLiteralFields = true,
+            compositeLiteralTypes = true,
+            constantValues = true,
+            functionTypeParameters = true,
+            parameterNames = true,
+            rangeVariableTypes = true,
+          },
+          analyses = {
+            nilness = true,
+            unusedparams = true,
+            unusedwrite = true,
+            useany = true,
+          },
+          usePlaceholders = true,
+          completeUnimported = true,
+          staticcheck = true,
+          directoryFilters = { "-.git", "-.vscode", "-.idea", "-.vscode-test", "-node_modules" },
+          semanticTokens = true,
         },
       },
       init_options = { usePlaceholders = true },
@@ -192,6 +192,5 @@ return {
     -- })
 
     -- vim.lsp.enable("helm_ls")
-
   end,
 }

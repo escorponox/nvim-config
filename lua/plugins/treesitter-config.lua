@@ -34,6 +34,7 @@ local new_config = {
       "markdown_inline",
       "regex",
       "rust",
+      "sql",
       "terraform",
       "toml",
       "tsx",

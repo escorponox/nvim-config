@@ -73,7 +73,7 @@ return {
         map({ "n", "v" }, "<leader>hh", gs.preview_hunk)
         map({ "n", "v" }, "<leader>hi", gs.preview_hunk_inline)
         map({ "n", "v" }, "<leader>hu", gs.reset_hunk)
-        -- map("n", 'gb', gs.blame_line)
+        map("n", "gb", gs.blame)
       end,
     },
   },
@@ -82,10 +82,54 @@ return {
     enabled = true,
     lazy = false,
     keys = {
-      { "gb", ":Git blame<CR>", desc = "Git blame" },
+      -- { "gb", ":Git blame<CR>", desc = "Git blame" },
       -- { "gh", ":0Gclog<CR>:cclose<CR>", desc = "Git history" },
       { ",fh", ":vert Git log -p %<CR>", desc = "Git history" },
     },
   },
-  "sindrets/diffview.nvim",
+  {
+    "sindrets/diffview.nvim",
+    keys = {
+      { "<leader>gd", ":DiffviewOpen<CR>", desc = "Git Diff View" },
+      { "<leader>gc", ":DiffviewClose<CR>", desc = "Git Diff View Close" },
+    },
+    config = function()
+      local actions = require("diffview.actions")
+      require("diffview").setup({
+        keymaps = {
+          view = {
+            -- { "n", "<tab>", false },
+            -- Disable the default normal mode mapping for `<tab>`:
+            {
+              "n",
+              "[[",
+              actions.prev_conflict,
+              { desc = "In the merge-tool: jump to the previous conflict" },
+            },
+            {
+              "n",
+              "]]",
+              actions.next_conflict,
+              { desc = "In the merge-tool: jump to the next conflict" },
+            },
+          },
+          diff3 = {
+            -- Mappings in 3-way diff layouts
+            {
+              { "n", "x" },
+              "<C-l>",
+              actions.diffget("ours"),
+              { desc = "Obtain the diff hunk from the OURS version of the file" },
+            },
+            {
+              { "n", "x" },
+              "<C-h>",
+              actions.diffget("theirs"),
+              { desc = "Obtain the diff hunk from the THEIRS version of the file" },
+            },
+          },
+        },
+      })
+    end,
+  },
 }
