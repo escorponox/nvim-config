@@ -3,7 +3,7 @@ return {
   enabled = true,
   event = { "BufReadPre", "BufNewFile" },
   init = function()
-    local lspconfig = require("lspconfig")
+    -- local lspconfig = require("lspconfig")
 
     local function goto_next_diagnostic()
       vim.diagnostic.jump({ count = 1, float = true })
@@ -28,40 +28,22 @@ return {
 
     -- Add cmp_nvim_lsp capabilities settings to lspconfig
     -- This should be executed before you configure any language server
-    local lspconfig_defaults = require("lspconfig").util.default_config
+    -- local lspconfig_defaults = require("lspconfig").util.default_config
 
-    local capabilities = require("cmp_nvim_lsp").default_capabilities()
-    capabilities.textDocument.completion.completionItem.snippetSupport = false
+    -- local capabilities = require("cmp_nvim_lsp").default_capabilities()
+    -- capabilities.textDocument.completion.completionItem.snippetSupport = false
 
-    lspconfig_defaults.capabilities = vim.tbl_deep_extend("force", lspconfig_defaults.capabilities, capabilities)
+    -- lspconfig_defaults.capabilities = vim.tbl_deep_extend("force", lspconfig_defaults.capabilities, capabilities)
 
-    -- vim.api.nvim_create_autocmd("LspAttach", {
-    --   callback = function(ev)
-    --     vim.bo[ev.buf].omnifunc = "v:lua.vim.lsp.omnifunc"
+    vim.lsp.config("copilot", {
+      cmd = { "npx", "@github/copilot-language-server@^1.406.0", "--stdio" },
+    })
 
-    --     local client = vim.lsp.get_client_by_id(ev.data.client_id)
-
-    --     if client ~= nil and client.name == "gopls" then
-    --       if not client.server_capabilities.semanticTokensProvider then
-    --         local semantic = client.config.capabilities.textDocument.semanticTokens
-    --         if semantic ~= nil then
-    --           client.server_capabilities.semanticTokensProvider = {
-    --             full = true,
-    --             legend = {
-    --               tokenTypes = semantic.tokenTypes,
-    --               tokenModifiers = semantic.tokenModifiers,
-    --             },
-    --             range = true,
-    --           }
-    --         end
-    --       end
-    --     end
-    --   end,
-    -- })
+    vim.lsp.enable("copilot")
 
     -- lua
     vim.lsp.config("lua_ls", {
-      capabilities = capabilities,
+      -- capabilities = capabilities,
       settings = {
         Lua = {
           runtime = { version = "LuaJIT" },
@@ -145,7 +127,7 @@ return {
     -- Golang
     vim.lsp.config("gopls", {
       cmd = { "gopls" },
-      capabilities = capabilities,
+      -- capabilities = capabilities,
       settings = {
         gopls = {
           gofumpt = true,
@@ -192,5 +174,6 @@ return {
     -- })
 
     -- vim.lsp.enable("helm_ls")
+    vim.lsp.enable("tofu_ls")
   end,
 }

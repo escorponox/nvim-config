@@ -16,6 +16,5 @@ require("options")
 require("autocommands")
 require("commands")
 require("macros")
-require("opencode-api")
 
 require("lazy").setup("plugins")
