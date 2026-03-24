@@ -84,88 +84,88 @@ return {
 
     vim.lsp.enable("biome")
 
-    vim.lsp.config("eslint", {
-      settings = {
-        codeAction = {
-          disableRuleComment = {
-            enable = true,
-            location = "separateLine",
-          },
-          showDocumentation = {
-            enable = true,
-          },
-        },
-        codeActionOnSave = {
-          enable = false,
-          mode = "all",
-        },
-        experimental = {
-          useFlatConfig = false,
-        },
-        format = false,
-        nodePath = "",
-        onIgnoredFiles = "off",
-        problems = {
-          shortenToSingleLine = false,
-        },
-        quiet = false,
-        rulesCustomizations = {},
-        run = "onSave",
-        useESLintClass = false,
-        validate = "on",
-        workingDirectory = {
-          mode = "auto",
-        },
-      },
-    })
+    -- vim.lsp.config("eslint", {
+    --   settings = {
+    --     codeAction = {
+    --       disableRuleComment = {
+    --         enable = true,
+    --         location = "separateLine",
+    --       },
+    --       showDocumentation = {
+    --         enable = true,
+    --       },
+    --     },
+    --     codeActionOnSave = {
+    --       enable = false,
+    --       mode = "all",
+    --     },
+    --     experimental = {
+    --       useFlatConfig = false,
+    --     },
+    --     format = false,
+    --     nodePath = "",
+    --     onIgnoredFiles = "off",
+    --     problems = {
+    --       shortenToSingleLine = false,
+    --     },
+    --     quiet = false,
+    --     rulesCustomizations = {},
+    --     run = "onSave",
+    --     useESLintClass = false,
+    --     validate = "on",
+    --     workingDirectory = {
+    --       mode = "auto",
+    --     },
+    --   },
+    -- })
 
-    vim.lsp.enable("eslint")
+    -- vim.lsp.enable("eslint")
 
     -- python
-    vim.lsp.enable("ruff")
+    -- vim.lsp.enable("ruff")
 
     -- Golang
-    vim.lsp.config("gopls", {
-      cmd = { "gopls" },
-      -- capabilities = capabilities,
-      settings = {
-        gopls = {
-          gofumpt = true,
-          codelenses = {
-            gc_details = false,
-            generate = true,
-            regenerate_cgo = true,
-            run_govulncheck = true,
-            test = true,
-            tidy = true,
-            upgrade_dependency = true,
-            vendor = true,
-          },
-          hints = {
-            assignVariableTypes = true,
-            compositeLiteralFields = true,
-            compositeLiteralTypes = true,
-            constantValues = true,
-            functionTypeParameters = true,
-            parameterNames = true,
-            rangeVariableTypes = true,
-          },
-          analyses = {
-            nilness = true,
-            unusedparams = true,
-            unusedwrite = true,
-            useany = true,
-          },
-          usePlaceholders = true,
-          completeUnimported = true,
-          staticcheck = true,
-          directoryFilters = { "-.git", "-.vscode", "-.idea", "-.vscode-test", "-node_modules" },
-          semanticTokens = true,
-        },
-      },
-      init_options = { usePlaceholders = true },
-    })
-    vim.lsp.enable("gopls")
+    -- vim.lsp.config("gopls", {
+    --   cmd = { "gopls" },
+    --   -- capabilities = capabilities,
+    --   settings = {
+    --     gopls = {
+    --       gofumpt = true,
+    --       codelenses = {
+    --         gc_details = false,
+    --         generate = true,
+    --         regenerate_cgo = true,
+    --         run_govulncheck = true,
+    --         test = true,
+    --         tidy = true,
+    --         upgrade_dependency = true,
+    --         vendor = true,
+    --       },
+    --       hints = {
+    --         assignVariableTypes = true,
+    --         compositeLiteralFields = true,
+    --         compositeLiteralTypes = true,
+    --         constantValues = true,
+    --         functionTypeParameters = true,
+    --         parameterNames = true,
+    --         rangeVariableTypes = true,
+    --       },
+    --       analyses = {
+    --         nilness = true,
+    --         unusedparams = true,
+    --         unusedwrite = true,
+    --         useany = true,
+    --       },
+    --       usePlaceholders = true,
+    --       completeUnimported = true,
+    --       staticcheck = true,
+    --       directoryFilters = { "-.git", "-.vscode", "-.idea", "-.vscode-test", "-node_modules" },
+    --       semanticTokens = true,
+    --     },
+    --   },
+    --   init_options = { usePlaceholders = true },
+    -- })
+    -- vim.lsp.enable("gopls")
 
     -- lspconfig.rust_analyzer.setup({
     --   on_attach = function(_, bufnr)

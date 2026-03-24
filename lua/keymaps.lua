@@ -5,7 +5,7 @@ vim.g.maplocalleader = " "
 vim.keymap.set("i", "jj", "<Esc>")
 
 --nnoremap = ,
-vim.keymap.set("n", "=", ",")
+-- vim.keymap.set("n", "=", ",")
 
 -- visual movement
 vim.keymap.set("n", "j", "gj")

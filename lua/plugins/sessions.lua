@@ -37,6 +37,9 @@ return {
         return
       end
       local cwd = vim.loop.cwd()
+      if (not cwd) or cwd == "" then
+        return
+      end
       -- replace / with _ to avoid errors
       local clean_cwd = string.gsub(cwd, "/", "_")
 
