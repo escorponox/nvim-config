@@ -107,6 +107,8 @@ return {
             ["<c-v>"] = { "edit_vsplit", mode = { "i" } },
             ["<c-t>"] = { "tab", mode = { "i" } },
             ["<c-q>"] = { "to_qflist", mode = { "i", "n" } },
+            ["<c-d>"] = { "preview_scroll_down", mode = { "i", "n" } },
+            ["<c-u>"] = { "preview_scroll_up", mode = { "i", "n" } },
           },
         },
         list = {
@@ -114,6 +116,8 @@ return {
             ["s"] = { "edit_vsplit", mode = { "n" } },
             ["t"] = { "tab", mode = { "n" } },
             ["<c-q>"] = { "to_qflist", mode = { "i", "n" } },
+            ["<c-d>"] = { "preview_scroll_down", mode = { "i", "n" } },
+            ["<c-u>"] = { "preview_scroll_up", mode = { "i", "n" } },
           },
         },
       },
@@ -168,6 +172,14 @@ return {
 
     -- git
     { ",fs", function() Snacks.picker.git_status() end, desc = "Git Status" },
+    { "<leader>gm", function()
+      local base = vim.fn.system("git rev-parse --verify origin/main 2>/dev/null"):find("%S") and "origin/main" or "origin/master"
+      Snacks.picker.git_diff({ base = base })
+    end, desc = "Branch vs main/master" },
+    { "<leader>gh", function() Snacks.picker.git_log({ current_file = true }) end, desc = "File history" },
+    { "<leader>gl", function() Snacks.picker.git_log() end, desc = "Git Log" },
+    { "<leader>gp", function() Snacks.picker.gh_pr() end, desc = "GitHub PRs" },
+    { "<leader>gP", function() Snacks.picker.gh_pr({ state = "all" }) end, desc = "GitHub PRs (all)" },
 
     -- quickfix
     { ",fq", function() Snacks.picker.qflist() end, desc = "Quickfix" },

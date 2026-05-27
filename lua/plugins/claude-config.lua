@@ -8,6 +8,9 @@ return {
     terminal = {
       provider = "none",
     },
+    diff_opts = {
+      open_in_new_tab = true,
+    },
   },
   keys = {
     { "<leader>am", "<cmd>ClaudeCodeSelectModel<cr>", desc = "Select Claude model" },

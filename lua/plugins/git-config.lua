@@ -1,5 +1,4 @@
 local prevFocusedWindow = nil
-
 return {
   {
     "lewis6991/gitsigns.nvim",

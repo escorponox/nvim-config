@@ -29,9 +29,11 @@ return {
         },
       },
       filters = {
-        custom = { "\\.DS_Store", "^\\.git", "\\.vscode" },
+        dotfiles = false,
+        custom = { "\\.DS_Store", "^\\.git$", "\\.vscode" },
       },
       renderer = {
+        hidden_display = "all",
         special_files = { "package.json", ".env", "go.mod", "Makefile" },
         icons = {
           padding = " ",

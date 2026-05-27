@@ -35,11 +35,11 @@ return {
 
     -- lspconfig_defaults.capabilities = vim.tbl_deep_extend("force", lspconfig_defaults.capabilities, capabilities)
 
-    vim.lsp.config("copilot", {
-      cmd = { "npx", "@github/copilot-language-server@^1.406.0", "--stdio" },
-    })
+    -- vim.lsp.config("copilot", {
+    --   cmd = { "npx", "@github/copilot-language-server@^1.406.0", "--stdio" },
+    -- })
 
-    vim.lsp.enable("copilot")
+    -- vim.lsp.enable("copilot")
 
     -- lua
     vim.lsp.config("lua_ls", {
@@ -174,6 +174,6 @@ return {
     -- })
 
     -- vim.lsp.enable("helm_ls")
-    vim.lsp.enable("tofu_ls")
+    -- vim.lsp.enable("tofu_ls")
   end,
 }
