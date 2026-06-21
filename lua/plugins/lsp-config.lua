@@ -84,6 +84,8 @@ return {
 
     vim.lsp.enable("biome")
 
+    vim.lsp.enable("rust_analyzer")
+
     -- vim.lsp.config("eslint", {
     --   settings = {
     --     codeAction = {
