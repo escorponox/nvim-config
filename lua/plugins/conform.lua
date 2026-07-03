@@ -18,6 +18,7 @@ end, {
   desc = "Disable autoformat-on-save",
   bang = true,
 })
+
 vim.api.nvim_create_user_command("FormatEnable", function()
   vim.b.disable_autoformat = false
   vim.g.disable_autoformat = false
@@ -29,10 +30,13 @@ return {
   "stevearc/conform.nvim",
   enabled = true,
   opts = {
-    format_on_save = {
-      timeout_ms = 2500,
-      lsp_format = "fallback",
-    },
+    format_on_save = function(bufnr)
+      -- Disable with a global or buffer-local variable
+      if vim.g.disable_autoformat or vim.b[bufnr].disable_autoformat then
+        return
+      end
+      return { timeout_ms = 2500, lsp_format = "fallback" }
+    end,
     formatters_by_ft = {
       ["javascript"] = use_biome_if_installed_locally,
       ["javascriptreact"] = use_biome_if_installed_locally,
